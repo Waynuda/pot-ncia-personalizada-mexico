@@ -69,7 +69,7 @@ const QuizContainer: React.FC = () => {
   const bodyOptions = [
     { label: "Magro", sub: "Metabolismo acelerado", img: "/Magro.png" },
     { label: "Médio", sub: "Composição equilibrada", img: "/Medio.png" },
-    { label: "Acima do peso", sub: "Tendência a acumular gordura", img: bodyOverweight },
+    { label: "Acima do peso", sub: "Tendência a acumular gordura", img: "/Acima do peso.png" },
   ];
 
   const renderStep = () => {
