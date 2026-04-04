@@ -8,6 +8,14 @@ import ComparisonChart from "./ComparisonChart";
 import CheckoutPage from "./CheckoutPage";
 import { Timer, Heart, Zap, Shield, Dumbbell, Brain, Users, Clock, Activity, Eye, Coffee, Cigarette, Wine, Candy, Utensils, Briefcase, Home, Footprints, HardHat, Monitor, Star } from "lucide-react";
 
+import age1830 from "@/assets/age-18-30.png";
+import age3145 from "@/assets/age-31-45.png";
+import age4655 from "@/assets/age-46-55.png";
+import age56plus from "@/assets/age-56-plus.png";
+import bodySlim from "@/assets/body-slim.png";
+import bodyMedium from "@/assets/body-medium.png";
+import bodyOverweight from "@/assets/body-overweight.png";
+
 const TOTAL_STEPS = 32;
 
 const QuizContainer: React.FC = () => {
@@ -55,6 +63,19 @@ const QuizContainer: React.FC = () => {
     return <CheckoutPage name={answers[31] || "Campeão"} />;
   }
 
+  const ageOptions = [
+    { label: "18-30 anos", img: age1830 },
+    { label: "31-45 anos", img: age3145 },
+    { label: "46-55 anos", img: age4655 },
+    { label: "+56 anos", img: age56plus },
+  ];
+
+  const bodyOptions = [
+    { label: "Magro", sub: "Metabolismo acelerado", img: bodySlim },
+    { label: "Médio", sub: "Composição equilibrada", img: bodyMedium },
+    { label: "Acima do peso", sub: "Tendência a acumular gordura", img: bodyOverweight },
+  ];
+
   const renderStep = () => {
     switch (step) {
       case 1:
@@ -67,8 +88,20 @@ const QuizContainer: React.FC = () => {
               Selecione sua faixa etária
             </p>
             <div className="grid grid-cols-2 gap-3">
-              {["18-30 anos", "31-45 anos", "46-55 anos", "+56 anos"].map((opt, i) => (
-                <OptionCard key={opt} label={opt} icon={<Users className="w-5 h-5" />} selected={answers[1] === opt} onClick={() => selectOption(opt)} delay={i * 80} />
+              {ageOptions.map((opt, i) => (
+                <div
+                  key={opt.label}
+                  onClick={() => selectOption(opt.label)}
+                  className={`relative overflow-hidden cursor-pointer rounded-xl border-2 p-3 transition-all duration-300 hover:scale-[1.02] hover:shadow-md active:scale-[0.98] flex flex-col items-center gap-2 ${
+                    answers[1] === opt.label
+                      ? "border-primary bg-accent shadow-sm"
+                      : "border-border bg-card hover:border-primary/40"
+                  }`}
+                  style={{ animation: `fadeInUp 0.4s ease-out ${i * 80}ms both` }}
+                >
+                  <img src={opt.img} alt={opt.label} className="w-20 h-20 object-contain" loading="lazy" width={512} height={512} />
+                  <p className="font-medium text-sm text-foreground text-center">{opt.label}</p>
+                </div>
               ))}
             </div>
           </div>
@@ -81,12 +114,32 @@ const QuizContainer: React.FC = () => {
               Escolha seu tipo de corpo
             </h2>
             <div className="space-y-3">
-              {[
-                { label: "Magro", sub: "Metabolismo acelerado", icon: <Activity className="w-5 h-5" /> },
-                { label: "Médio", sub: "Composição equilibrada", icon: <Shield className="w-5 h-5" /> },
-                { label: "Acima do peso", sub: "Tendência a acumular gordura", icon: <Heart className="w-5 h-5" /> },
-              ].map((opt, i) => (
-                <OptionCard key={opt.label} label={opt.label} sublabel={opt.sub} icon={opt.icon} selected={answers[2] === opt.label} onClick={() => selectOption(opt.label)} delay={i * 80} />
+              {bodyOptions.map((opt, i) => (
+                <div
+                  key={opt.label}
+                  onClick={() => selectOption(opt.label)}
+                  className={`relative overflow-hidden cursor-pointer rounded-xl border-2 p-4 transition-all duration-300 hover:scale-[1.02] hover:shadow-md active:scale-[0.98] flex items-center gap-4 ${
+                    answers[2] === opt.label
+                      ? "border-primary bg-accent shadow-sm"
+                      : "border-border bg-card hover:border-primary/40"
+                  }`}
+                  style={{ animation: `fadeInUp 0.4s ease-out ${i * 80}ms both` }}
+                >
+                  <img src={opt.img} alt={opt.label} className="w-16 h-16 object-contain flex-shrink-0" loading="lazy" width={512} height={512} />
+                  <div className="flex-1">
+                    <p className="font-medium text-sm text-foreground">{opt.label}</p>
+                    <p className="text-xs text-muted-foreground mt-0.5">{opt.sub}</p>
+                  </div>
+                  <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all duration-300 flex-shrink-0 ${
+                    answers[2] === opt.label ? "border-primary bg-primary" : "border-muted-foreground/30"
+                  }`}>
+                    {answers[2] === opt.label && (
+                      <svg className="w-3 h-3 text-primary-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                    )}
+                  </div>
+                </div>
               ))}
             </div>
           </div>
@@ -95,7 +148,7 @@ const QuizContainer: React.FC = () => {
       case 3:
         return (
           <EducativeSlide
-            title="Mais de 1 milhão de homens brasileiros escolheram o Plano Viren"
+            title="Mais de 1 milhão de homens brasileiros escolheram o Plano Nexor MEN"
             description="Veja a transformação real: do Dia 1 ao Dia 24, nossos usuários relatam melhorias significativas em controle, resistência e confiança."
             visual={
               <div className="bg-accent rounded-2xl p-6 space-y-3">
@@ -238,7 +291,7 @@ const QuizContainer: React.FC = () => {
       case 12:
         return (
           <EducativeSlide
-            title="Aumento de até 7x no tempo médio com o Plano Viren"
+            title="Aumento de até 7x no tempo médio com o Plano Nexor MEN"
             description="Nosso método exclusivo, baseado em ciência, entrega resultados muito superiores aos concorrentes."
             visual={
               <ComparisonChart
