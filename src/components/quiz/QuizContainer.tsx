@@ -128,7 +128,7 @@ const QuizContainer: React.FC = () => {
   const bodyOptions = [
     { label: "Magro", sub: "Metabolismo acelerado", img: "/Magro.png" },
     { label: "Médio", sub: "Composição equilibrada", img: "/Medio.png" },
-    { label: "Acima do peso", sub: "Tendência a acumular gordura", img: "/Acima do peso.png" },
+    { label: "Acima do peso", sub: "Tendência a acumular gordura", img: "/acima_do_peso.png" },
   ];
 
   const renderStep = () => {
@@ -217,7 +217,7 @@ const QuizContainer: React.FC = () => {
         return (
           <div className="space-y-6 text-center">
             <div style={{ animation: "fadeInUp 0.4s ease-out both" }}>
-              <img src="/etapa 3.png" alt="Resultados" className="w-full object-cover rounded-2xl drop-shadow-sm" loading="lazy" />
+              <img src="/etapa_3.png" alt="Resultados" className="w-full object-cover rounded-2xl drop-shadow-sm" loading="lazy" />
             </div>
             <p className="text-xl font-bold text-foreground leading-tight" style={{ animation: "fadeInUp 0.4s ease-out 150ms both" }}>
               Nós ajudamos mais de 150.000 homens a melhorar seu desempenho sexual
@@ -269,7 +269,7 @@ const QuizContainer: React.FC = () => {
               </p>
             </div>
             <div style={{ animation: "fadeInUp 0.4s ease-out 150ms both" }}>
-              <img src="/etapa 5.png" alt="Músculo pélvico" className="w-full object-cover rounded-2xl drop-shadow-sm" loading="lazy" />
+              <img src="/etapa_5.png" alt="Músculo pélvico" className="w-full object-cover rounded-2xl drop-shadow-sm" loading="lazy" />
             </div>
             <button
               onClick={() => goNext()}
