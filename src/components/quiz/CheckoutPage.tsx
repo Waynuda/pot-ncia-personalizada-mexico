@@ -3,6 +3,7 @@ import CountdownTimer from "./CountdownTimer";
 import ComparisonChart from "./ComparisonChart";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Shield, Lock, CheckCircle, Star, Zap } from "lucide-react";
+import nexorLogo from "@/assets/nexor-logo.png";
 
 interface CheckoutPageProps {
   name: string;
@@ -18,6 +19,12 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
       </div>
 
       <div className="max-w-lg mx-auto px-4 py-8 space-y-8">
+        {/* Logo */}
+        <div className="flex items-center justify-center gap-2" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
+          <img src={nexorLogo} alt="Nexor MEN" className="w-10 h-10 object-contain" />
+          <span className="text-xl font-bold"><span className="text-primary">NEXOR</span> <span className="text-foreground">MEN</span></span>
+        </div>
+
         {/* Headline */}
         <div className="text-center space-y-3" style={{ animation: "fadeInUp 0.5s ease-out both" }}>
           <h1 className="text-2xl font-bold text-foreground leading-tight">
@@ -96,7 +103,7 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
                 </li>
               ))}
             </ul>
-            <button className="w-full py-3.5 rounded-xl bg-primary text-primary-foreground font-bold text-base transition-all hover:brightness-110 active:scale-[0.98] animate-pulse-slow">
+            <button className="w-full py-3.5 rounded-xl bg-primary text-primary-foreground font-bold text-base transition-all hover:brightness-110 active:scale-[0.98] animate-pulse-slow shadow-lg">
               Quero o Combo Premium
             </button>
           </div>
