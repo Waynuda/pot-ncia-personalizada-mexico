@@ -102,6 +102,12 @@ const QuizContainer: React.FC = () => {
                 </div>
               ))}
             </div>
+            <div 
+              className="mt-6 text-[10px] text-center text-muted-foreground/60 px-4" 
+              style={{ animation: "fadeInUp 0.4s ease-out 300ms both" }}
+            >
+              Ao escolher sua idade e continuar, você concorda com nossos <a href="#" className="underline hover:text-primary transition-colors">Termos de Serviço</a> | <a href="#" className="underline hover:text-primary transition-colors">Política de Privacidade</a>
+            </div>
           </div>
         );
 
