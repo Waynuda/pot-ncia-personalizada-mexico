@@ -373,28 +373,6 @@ const QuizContainer: React.FC = () => {
 
       case 18:
         return (
-          <EducativeSlide
-            title="O Músculo Bulbocavernoso: a chave da sua performance"
-            description="Este músculo envolve a base do pênis e é diretamente responsável pela rigidez da ereção e pelo controle ejaculatório. Treinar ele é como treinar qualquer outro músculo do corpo."
-            visual={
-              <div className="bg-accent rounded-2xl p-6">
-                <div className="relative mx-auto w-56 h-40">
-                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-16 h-28 bg-primary/10 rounded-t-full border-2 border-primary/30" />
-                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-24 h-8 bg-primary/30 rounded-full flex items-center justify-center">
-                    <span className="text-[9px] font-bold text-primary">BULBOCAVERNOSO</span>
-                  </div>
-                  <div className="absolute bottom-14 left-1/2 -translate-x-1/2">
-                    <Dumbbell className="w-6 h-6 text-primary animate-bounce" />
-                  </div>
-                </div>
-              </div>
-            }
-            onContinue={() => goNext()}
-          />
-        );
-
-      case 19:
-        return (
           <div className="space-y-6 text-center">
             <div className="space-y-4" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
               <p className="font-bold text-foreground text-xl leading-snug">
@@ -420,6 +398,28 @@ const QuizContainer: React.FC = () => {
               Continuar
             </button>
           </div>
+        );
+
+      case 19:
+        return (
+          <EducativeSlide
+            title="84% dos usuários melhoraram significativamente"
+            description=""
+            visual={
+              <div className="bg-accent rounded-2xl p-5 text-left space-y-3">
+                <div className="flex gap-1">
+                  {[1,2,3,4,5].map(s => (
+                    <Star key={s} className="w-4 h-4 fill-primary text-primary" />
+                  ))}
+                </div>
+                <p className="text-sm text-foreground italic">
+                  "Depois de 3 semanas seguindo o plano, minha confiança mudou completamente. Consigo durar muito mais e minha parceira percebeu a diferença. Recomendo de olhos fechados."
+                </p>
+                <p className="text-xs font-bold text-foreground">— Rodrigo S., 34 anos</p>
+              </div>
+            }
+            onContinue={() => goNext()}
+          />
         );
 
       case 20:
