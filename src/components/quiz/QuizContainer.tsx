@@ -409,7 +409,7 @@ const QuizContainer: React.FC = () => {
               <div className="bg-accent rounded-2xl p-5 text-left space-y-3">
                 <div className="flex gap-1">
                   {[1,2,3,4,5].map(s => (
-                    <Star key={s} className="w-4 h-4 fill-primary text-primary" />
+                    <Star key={s} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                   ))}
                 </div>
                 <p className="text-sm text-foreground italic">

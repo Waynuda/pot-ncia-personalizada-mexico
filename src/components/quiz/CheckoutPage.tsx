@@ -134,7 +134,7 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
           ].map((t, i) => (
             <div key={t.name} className="bg-accent rounded-xl p-4 space-y-2" style={{ animation: `fadeInUp 0.4s ease-out ${700 + i * 100}ms both` }}>
               <div className="flex gap-0.5">
-                {[1,2,3,4,5].map(s => <Star key={s} className="w-3.5 h-3.5 fill-primary text-primary" />)}
+                {[1,2,3,4,5].map(s => <Star key={s} className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />)}
               </div>
               <p className="text-sm text-foreground italic">"{t.text}"</p>
               <p className="text-xs font-bold text-muted-foreground">— {t.name}, {t.age} anos</p>
