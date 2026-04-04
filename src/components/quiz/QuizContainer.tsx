@@ -88,15 +88,17 @@ const QuizContainer: React.FC = () => {
                 <div
                   key={opt.label}
                   onClick={() => selectOption(opt.label)}
-                  className={`relative overflow-hidden cursor-pointer rounded-xl border-2 p-3 transition-all duration-300 hover:scale-[1.02] hover:shadow-md active:scale-[0.98] flex flex-col items-center gap-2 ${
+                  className={`relative overflow-hidden cursor-pointer rounded-xl border-2 transition-all duration-300 hover:scale-[1.02] hover:shadow-md active:scale-[0.98] flex flex-col ${
                     answers[1] === opt.label
                       ? "border-primary bg-accent shadow-sm"
                       : "border-border bg-card hover:border-primary/40"
                   }`}
                   style={{ animation: `fadeInUp 0.4s ease-out ${i * 80}ms both` }}
                 >
-                  <img src={opt.img} alt={opt.label} className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 object-contain drop-shadow-sm mb-1" loading="lazy" width={512} height={512} />
-                  <p className="font-medium text-sm text-foreground text-center">{opt.label}</p>
+                  <img src={opt.img} alt={opt.label} className="w-full aspect-square object-cover bg-muted/20" loading="lazy" />
+                  <div className="p-3 text-center border-t border-border/50">
+                    <p className="font-semibold text-sm text-foreground">{opt.label}</p>
+                  </div>
                 </div>
               ))}
             </div>
