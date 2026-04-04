@@ -3,7 +3,6 @@ import CountdownTimer from "./CountdownTimer";
 import ComparisonChart from "./ComparisonChart";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Shield, Lock, CheckCircle, Star, Zap } from "lucide-react";
-import nexorLogo from "@/assets/nexor-logo.png";
 
 interface CheckoutPageProps {
   name: string;
@@ -20,9 +19,9 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
 
       <div className="max-w-lg mx-auto px-4 py-8 space-y-8">
         {/* Logo */}
-        <div className="flex items-center justify-center gap-2" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
-          <img src={nexorLogo} alt="Nexor MEN" className="w-10 h-10 object-contain" />
-          <span className="text-xl font-bold"><span className="text-primary">NEXOR</span> <span className="text-foreground">MEN</span></span>
+        <div className="flex flex-col items-center justify-center gap-1" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
+          <img src="/logo.png" alt="Nexor MEN logo" className="w-20 h-20 object-contain" />
+          <span className="text-2xl font-bold"><span className="text-primary">NEXOR</span> <span className="text-foreground ml-1">MEN</span></span>
         </div>
 
         {/* Headline */}

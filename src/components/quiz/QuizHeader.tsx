@@ -1,6 +1,4 @@
 import React from "react";
-import nexorLogo from "@/assets/nexor-logo.png";
-
 interface QuizHeaderProps {
   currentStep: number;
   totalSteps: number;
@@ -12,8 +10,8 @@ const QuizHeader: React.FC<QuizHeaderProps> = ({ currentStep, totalSteps }) => {
   return (
     <div className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border pb-3 pt-4 px-4">
       <div className="max-w-lg mx-auto">
-        <div className="flex items-center justify-center mb-3 gap-2">
-          <img src={nexorLogo} alt="Nexor MEN" className="w-8 h-8 object-contain" />
+        <div className="flex flex-col items-center justify-center mb-3 gap-1">
+          <img src="/logo.png" alt="Nexor MEN logo" className="w-16 h-16 object-contain" />
           <h1 className="text-xl font-bold tracking-tight">
             <span className="text-primary">NEXOR</span>
             <span className="text-foreground ml-1">MEN</span>
