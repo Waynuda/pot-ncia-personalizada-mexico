@@ -1,163 +1,193 @@
 import React from "react";
 import CountdownTimer from "./CountdownTimer";
-import ComparisonChart from "./ComparisonChart";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Shield, Lock, CheckCircle, Star, Zap } from "lucide-react";
+import { Shield, Lock, CheckCircle, Star, CheckIcon, ShieldCheck } from "lucide-react";
 
 interface CheckoutPageProps {
   name: string;
 }
 
+const ProgressBar = ({ label, before, after, colorClass }: { label: string, before: number, after: number, colorClass: string }) => (
+  <div className="space-y-1 mb-4">
+    <div className="flex justify-between items-end text-sm">
+      <span className="font-semibold text-foreground">{label}</span>
+    </div>
+    <div className="flex items-center gap-3">
+      <span className="text-xs text-muted-foreground w-12 shrink-0">Antes</span>
+      <div className="flex-1 h-3.5 bg-muted rounded-full overflow-hidden flex">
+        <div className={`h-full ${colorClass} opacity-40 rounded-full`} style={{ width: `${before}%` }}></div>
+      </div>
+      <span className="text-xs font-bold text-muted-foreground shrink-0 w-8">{before}%</span>
+    </div>
+    <div className="flex items-center gap-3">
+      <span className="text-xs font-semibold text-primary w-12 shrink-0">Depois</span>
+      <div className="flex-1 h-3.5 bg-muted rounded-full overflow-hidden flex relative">
+        <div className={`h-full ${colorClass} rounded-full transition-all duration-1000 ease-out`} style={{ width: `${after}%` }}></div>
+      </div>
+      <span className="text-xs font-bold text-foreground shrink-0 w-8">{after}%</span>
+    </div>
+  </div>
+);
+
 const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <div className="bg-primary text-primary-foreground py-3 text-center">
-        <p className="text-sm font-medium">⏰ Oferta exclusiva expira em:</p>
-        <CountdownTimer minutes={10} />
+    <div className="min-h-screen bg-gray-50 pb-16 font-sans">
+      {/* Header Banner */}
+      <div className="bg-white py-4 shadow-sm flex justify-center items-center sticky top-0 z-50">
+        <div className="flex items-center gap-2">
+          <img src="/logo.png" alt="Nexor MEN" className="h-8" />
+          <span className="text-xl font-black text-gray-900 tracking-tight"><span className="text-primary">NEXOR</span> MEN</span>
+        </div>
       </div>
 
-      <div className="max-w-lg mx-auto px-4 py-8 space-y-8">
-        {/* Logo */}
-        <div className="flex flex-col items-center justify-center gap-1" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
-          <img src="/logo.png" alt="Nexor MEN logo" className="w-20 h-20 object-contain" />
-          <span className="text-2xl font-bold"><span className="text-primary">NEXOR</span> <span className="text-foreground ml-1">MEN</span></span>
+      <div className="max-w-2xl mx-auto px-4 pt-6 pb-12 space-y-8">
+        {/* Timer Banner */}
+        <div className="bg-green-100 text-green-800 py-3 px-4 text-center rounded-lg border border-green-200 flex items-center justify-center gap-2" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
+          <span className="text-sm font-medium">Oferta por tempo limitado!</span>
+          <span className="text-sm font-bold bg-green-200 px-2 py-0.5 rounded text-green-900 border border-green-300 scale-75 origin-left">
+             <CountdownTimer minutes={10} />
+          </span>
         </div>
 
         {/* Headline */}
-        <div className="text-center space-y-3" style={{ animation: "fadeInUp 0.5s ease-out both" }}>
-          <h1 className="text-2xl font-bold text-foreground leading-tight">
-            Seu Treino Personalizado Para Elevar Sua Potência Sexual Está Pronto, <span className="text-primary">{name}</span>.
+        <div className="text-center space-y-4" style={{ animation: "fadeInUp 0.5s ease-out 100ms both" }}>
+          <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 leading-tight">
+            Seu Treino Personalizado Para Elevar Sua Potência Sexual Está Pronto{name ? `, ${name}` : ''}.
           </h1>
-          <p className="text-sm text-muted-foreground">
-            Com base nas suas respostas, preparamos um plano específico para as suas necessidades.
+          <p className="text-gray-600 text-base max-w-lg mx-auto">
+            Com base na sua análise, montamos o plano definitivo para recuperar sua masculinidade em semanas.
           </p>
         </div>
 
-        {/* Transformation Chart */}
-        <div className="bg-card border border-border rounded-2xl p-5 space-y-4" style={{ animation: "fadeInUp 0.5s ease-out 200ms both" }}>
-          <h3 className="text-base font-bold text-foreground text-center">Sua Transformação Esperada</h3>
-          <ComparisonChart
-            data={[
-              { label: "Desempenho", before: 20, after: 90 },
-              { label: "Confiança", before: 25, after: 85 },
-              { label: "Controle", before: 15, after: 92 },
-            ]}
-          />
+        {/* Imagem Antes e Depois */}
+        <div className="bg-white rounded-2xl p-2 shadow-sm border border-gray-100 overflow-hidden" style={{ animation: "fadeInUp 0.5s ease-out 200ms both" }}>
+           <img src="/Para pagina de vendas.png" alt="Transformação Esperada" className="w-full object-cover rounded-xl" />
         </div>
 
-        {/* Pricing Cards */}
-        <div className="space-y-4" style={{ animation: "fadeInUp 0.5s ease-out 400ms both" }}>
-          <h3 className="text-base font-bold text-foreground text-center">Escolha seu plano</h3>
-
-          {/* Basic Plan */}
-          <div className="border-2 border-border rounded-2xl p-5 space-y-3 hover:border-primary/50 transition-colors cursor-pointer">
-            <div className="flex items-center justify-between">
-              <h4 className="font-bold text-foreground">Plano Básico</h4>
-              <span className="bg-secondary text-secondary-foreground text-[10px] font-bold px-2 py-1 rounded-full">POPULAR</span>
-            </div>
-            <p className="text-xs text-muted-foreground">Acesso ao treino completo de fortalecimento pélvico</p>
-            <div className="flex items-baseline gap-2">
-              <span className="text-sm text-muted-foreground line-through">R$ 194</span>
-              <span className="text-3xl font-bold text-primary">R$ 97</span>
-            </div>
-            <ul className="space-y-1.5">
-              {["Plano de 28 dias", "Vídeos explicativos", "Suporte por e-mail"].map(f => (
-                <li key={f} className="flex items-center gap-2 text-xs text-foreground">
-                  <CheckCircle className="w-3.5 h-3.5 text-primary flex-shrink-0" />
-                  {f}
-                </li>
-              ))}
-            </ul>
-            <button className="w-full py-3 rounded-xl bg-primary text-primary-foreground font-semibold transition-all hover:brightness-110 active:scale-[0.98]">
-              Quero Este Plano
-            </button>
-          </div>
-
-          {/* Premium Plan */}
-          <div className="border-2 border-primary rounded-2xl p-5 space-y-3 relative overflow-hidden cursor-pointer shadow-lg">
-            <div className="absolute top-0 right-0 bg-primary text-primary-foreground text-[10px] font-bold px-3 py-1 rounded-bl-xl">
-              MELHOR VALOR
-            </div>
-            <div className="flex items-center gap-2">
-              <Zap className="w-5 h-5 text-primary" />
-              <h4 className="font-bold text-foreground">Plano Premium (Combo)</h4>
-            </div>
-            <p className="text-xs text-muted-foreground">Treino completo + Mente Blindada + Bônus exclusivos</p>
-            <div className="flex items-baseline gap-2">
-              <span className="text-sm text-muted-foreground line-through">R$ 294</span>
-              <span className="text-3xl font-bold text-primary">R$ 147</span>
-            </div>
-            <ul className="space-y-1.5">
-              {[
-                "Tudo do Plano Básico",
-                "Módulo Mente Blindada",
-                "Bônus: Guia de Alimentação",
-                "Bônus: Técnicas Avançadas",
-                "Suporte prioritário",
-              ].map(f => (
-                <li key={f} className="flex items-center gap-2 text-xs text-foreground">
-                  <CheckCircle className="w-3.5 h-3.5 text-primary flex-shrink-0" />
-                  {f}
-                </li>
-              ))}
-            </ul>
-            <button className="w-full py-3.5 rounded-xl bg-primary text-primary-foreground font-bold text-base transition-all hover:brightness-110 active:scale-[0.98] animate-pulse-slow shadow-lg">
-              Quero o Combo Premium
-            </button>
-          </div>
+        {/* Progress Charts */}
+        <div className="bg-white border border-gray-100 shadow-sm rounded-2xl p-6 sm:p-8 space-y-2" style={{ animation: "fadeInUp 0.5s ease-out 300ms both" }}>
+          <h3 className="text-xl font-bold text-gray-900 text-center mb-6">Projeção da sua evolução:</h3>
+          <ProgressBar label="Desempenho Sexual" before={20} after={90} colorClass="bg-blue-600" />
+          <ProgressBar label="Autoconfiança" before={15} after={94} colorClass="bg-green-500" />
+          <ProgressBar label="Controle da Ejaculação" before={37} after={89} colorClass="bg-orange-500" />
         </div>
 
-        {/* Security Badges */}
-        <div className="flex items-center justify-center gap-6 py-4" style={{ animation: "fadeInUp 0.5s ease-out 600ms both" }}>
-          <div className="flex flex-col items-center gap-1">
-            <Lock className="w-6 h-6 text-muted-foreground" />
-            <span className="text-[10px] text-muted-foreground font-medium">Checkout Seguro</span>
-          </div>
-          <div className="flex flex-col items-center gap-1">
-            <Shield className="w-6 h-6 text-muted-foreground" />
-            <span className="text-[10px] text-muted-foreground font-medium">Dados Protegidos</span>
-          </div>
-          <div className="flex flex-col items-center gap-1">
-            <CheckCircle className="w-6 h-6 text-muted-foreground" />
-            <span className="text-[10px] text-muted-foreground font-medium">Garantia 7 dias</span>
-          </div>
-        </div>
+        {/* Offer Box */}
+        <div className="text-center" style={{ animation: "fadeInUp 0.5s ease-out 400ms both" }}>
+          <h2 className="text-2xl font-extrabold text-gray-900 mb-6">
+            Adquira agora o seu plano e tenha sua masculinidade de volta em semanas
+          </h2>
 
-        {/* Testimonials */}
-        <div className="space-y-3" style={{ animation: "fadeInUp 0.5s ease-out 700ms both" }}>
-          <h3 className="text-base font-bold text-foreground text-center">O que dizem nossos alunos</h3>
-          {[
-            { name: "Carlos M.", age: 42, text: "Em 2 semanas já senti uma diferença enorme. Minha esposa está mais feliz do que nunca." },
-            { name: "André L.", age: 38, text: "Já tentei de tudo. Esse foi o único método que realmente funcionou sem efeitos colaterais." },
-            { name: "Felipe R.", age: 29, text: "Achei que era papo, mas decidi testar. Melhor decisão que tomei. Recomendo!" },
-          ].map((t, i) => (
-            <div key={t.name} className="bg-accent rounded-xl p-4 space-y-2" style={{ animation: `fadeInUp 0.4s ease-out ${700 + i * 100}ms both` }}>
-              <div className="flex gap-0.5">
-                {[1,2,3,4,5].map(s => <Star key={s} className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />)}
+          <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200">
+            <div className="bg-green-600 py-3">
+              <h3 className="text-white font-bold text-lg">Treino Personalizado Para Elevar Sua Potência</h3>
+            </div>
+            
+            <div className="p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+              <div className="text-left w-full md:w-auto">
+                 <h4 className="text-2xl font-bold text-gray-900">Plano Nexor Men</h4>
+                 <p className="text-primary font-bold text-lg bg-primary/10 inline-block px-3 py-1 rounded-md mt-2">Exercícios Kegel</p>
               </div>
-              <p className="text-sm text-foreground italic">"{t.text}"</p>
-              <p className="text-xs font-bold text-muted-foreground">— {t.name}, {t.age} anos</p>
+
+              <div className="bg-green-50 rounded-xl p-4 w-full md:w-auto text-right border border-green-100 flex flex-col justify-center items-end">
+                 <div className="text-sm text-gray-500 line-through">De R$ 194</div>
+                 <div className="text-xs text-gray-500 mb-1">Por apenas</div>
+                 <div className="flex items-baseline justify-end gap-1">
+                   <span className="text-2xl font-bold text-green-700">R$</span>
+                   <span className="text-5xl font-black text-green-600 tracking-tighter">97</span>
+                 </div>
+                 <div className="text-xs text-gray-500 mt-1">ou 12x de R$ 9,74</div>
+              </div>
             </div>
-          ))}
+
+            <div className="px-6 pb-8">
+              <button className="w-full py-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-extrabold text-xl uppercase transition-all shadow-[0_8px_20px_-6px_rgba(22,163,74,0.5)] hover:shadow-[0_12px_25px_-6px_rgba(22,163,74,0.6)] hover:-translate-y-1 active:translate-y-0 active:shadow-none animate-pulse-slow">
+                Comprar Agora
+              </button>
+              
+              {/* Security Badges under button */}
+              <div className="flex items-center justify-center gap-4 mt-5">
+                <div className="flex items-center gap-1.5">
+                  <Lock className="w-4 h-4 text-green-600" />
+                  <span className="text-xs text-gray-600 font-medium">Checkout Seguro</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <ShieldCheck className="w-4 h-4 text-green-600" />
+                  <span className="text-xs text-gray-600 font-medium">Garantia 30 dias</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        {/* FAQ */}
-        <div className="space-y-3" style={{ animation: "fadeInUp 0.5s ease-out 900ms both" }}>
-          <h3 className="text-base font-bold text-foreground text-center">Perguntas Frequentes</h3>
-          <Accordion type="single" collapsible className="space-y-2">
+        {/* Benefits List */}
+        <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-100" style={{ animation: "fadeInUp 0.5s ease-out 500ms both" }}>
+          <h3 className="text-2xl font-bold text-gray-900 text-center mb-6">O que você vai ter acesso?</h3>
+          <ul className="space-y-4">
             {[
-              { q: "É seguro? Meus dados estão protegidos?", a: "Sim! Utilizamos criptografia de ponta e seus dados jamais são compartilhados com terceiros." },
-              { q: "Em quanto tempo vou ver resultados?", a: "A maioria dos usuários relata melhorias perceptíveis entre 7 e 14 dias de treino consistente." },
-              { q: "Preciso de equipamento?", a: "Não! Todos os exercícios são feitos apenas com o corpo, sem necessidade de nenhum equipamento." },
-              { q: "Funciona para qualquer idade?", a: "Sim. O plano é adaptado para a sua faixa etária e nível de condicionamento." },
-              { q: "E se eu não gostar?", a: "Você tem 7 dias de garantia incondicional. Se não estiver satisfeito, devolvemos 100% do seu investimento." },
+              { t: "Acesso a um programa avançado de exercícios de Kegel,", d: "com rotinas diárias estruturadas passo a passo." },
+              { t: "Treinos específicos para fortalecer abdômen e pernas,", d: "regiões que aumentam seu desejo e melhoram diretamente seu desempenho." },
+              { t: "Técnicas de controle comprovadas,", d: "que reduzem tensão física e mental e aumentam seu foco." },
+              { t: "Um programa de bem-estar integrado,", d: "criado para melhorar sua autoconfiança e te devolver o domínio da situação." }
+            ].map((ben, i) => (
+              <li key={i} className="flex gap-3 items-start">
+                <div className="mt-1 bg-green-100 p-1 rounded-full shrink-0">
+                  <CheckIcon className="w-4 h-4 text-green-600" strokeWidth={3} />
+                </div>
+                <p className="text-sm text-gray-700 leading-relaxed">
+                  <strong className="text-gray-900">{ben.t}</strong> {ben.d}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+        
+        {/* Testimonials */}
+        <div className="space-y-5" style={{ animation: "fadeInUp 0.5s ease-out 600ms both" }}>
+          <h3 className="text-2xl font-bold text-gray-900 text-center">Resultados de quem já testou</h3>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {[
+              { name: "Carlos M.", age: 42, t: "Minha confiança mudou completamente. Consigo durar muito mais e minha esposa percebeu a diferença logo nas primeiras semanas." },
+              { name: "André L.", age: 38, t: "Esse foi o único método que realmente funcionou para mim sem nenhum efeito colateral indesejado. Vale cada centavo." }
+            ].map(t => (
+              <div key={t.name} className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm flex flex-col justify-between">
+                <div>
+                  <div className="flex gap-1 mb-3">
+                    {[1,2,3,4,5].map(s => <Star key={s} className="w-4 h-4 fill-yellow-400 text-yellow-400" />)}
+                  </div>
+                  <p className="text-sm text-gray-700 italic mb-4">"{t.t}"</p>
+                </div>
+                <p className="text-xs font-bold text-gray-900">— {t.name}, {t.age} anos</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* 30 Day Guarantee */}
+        <div className="bg-blue-50 border-2 border-blue-100 rounded-2xl p-6 sm:p-8 text-center space-y-4 shadow-sm relative overflow-hidden" style={{ animation: "fadeInUp 0.5s ease-out 700ms both" }}>
+          <div className="absolute top-0 right-0 w-32 h-32 bg-blue-100 rounded-bl-full -mr-10 -mt-10 opacity-50 pointer-events-none"></div>
+          
+          <ShieldCheck className="w-16 h-16 text-blue-600 mx-auto" />
+          <h3 className="text-2xl font-extrabold text-blue-900">Garantia Incondicional de 30 Dias</h3>
+          <p className="text-sm text-blue-800 max-w-md mx-auto leading-relaxed">
+            Acreditamos tanto no nosso plano que oferecemos resultados visíveis ou seu dinheiro de volta. Você tem 30 dias para testar a rotina. Se não notar uma evolução clara na sua potência, devolvemos 100% do seu investimento. Sem perguntas.
+          </p>
+        </div>
+
+        {/* FAQ Area */}
+        <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-100" style={{ animation: "fadeInUp 0.5s ease-out 800ms both" }}>
+          <h3 className="text-2xl font-bold text-gray-900 text-center mb-6">Perguntas Frequentes</h3>
+          <Accordion type="single" collapsible className="space-y-3 w-full border-none">
+            {[
+              { q: "O método é seguro? Meus dados estão protegidos?", a: "Sim, utilizamos criptografia de ponta a ponta e jamais venderemos suas informações para terceiros. O pagamento é 100% seguro." },
+              { q: "Em quanto tempo verei resultados?", a: "A maior parte dos usuários relata melhorias claras de força e controle entre as primeiras semanas de prática consistente da nossa rotina de exercícios." },
+              { q: "Vou precisar comprar algum equipamento?", a: "Não. Nosso método foca no corpo e nos exercícios de contração que podem ser realizados em qualquer lugar, de graça." }
             ].map((faq, i) => (
-              <AccordionItem key={i} value={`faq-${i}`} className="border border-border rounded-xl px-4 overflow-hidden">
-                <AccordionTrigger className="text-sm font-medium text-foreground hover:no-underline py-3">
+              <AccordionItem key={i} value={`faq-${i}`} className="border border-gray-200 rounded-xl px-5 bg-gray-50/50">
+                <AccordionTrigger className="text-sm font-bold text-gray-900 hover:no-underline py-4 text-left">
                   {faq.q}
                 </AccordionTrigger>
-                <AccordionContent className="text-sm text-muted-foreground">
+                <AccordionContent className="text-sm text-gray-700 leading-relaxed pb-4">
                   {faq.a}
                 </AccordionContent>
               </AccordionItem>
@@ -165,15 +195,16 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
           </Accordion>
         </div>
 
-        {/* Final CTA */}
-        <div className="text-center space-y-3 pb-8" style={{ animation: "fadeInUp 0.5s ease-out 1000ms both" }}>
-          <button className="w-full py-4 rounded-xl bg-primary text-primary-foreground font-bold text-lg transition-all hover:brightness-110 active:scale-[0.98] animate-pulse-slow shadow-lg">
-            Começar Meu Treino Agora
-          </button>
-          <p className="text-xs text-muted-foreground">
-            🔒 Checkout 100% seguro · Garantia de 7 dias
-          </p>
+        {/* Bottom CTA Block */}
+        <div className="pb-10 pt-4" style={{ animation: "fadeInUp 0.5s ease-out 900ms both" }}>
+           <button className="w-full py-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-extrabold text-xl uppercase transition-all shadow-[0_8px_20px_-6px_rgba(22,163,74,0.5)] hover:shadow-[0_12px_25px_-6px_rgba(22,163,74,0.6)] hover:-translate-y-1 active:translate-y-0 active:shadow-none">
+             Quero Fazer Minha Inscrição
+           </button>
+           <p className="text-center text-xs text-gray-500 mt-4">
+             Acesso imediato ao material pelo e-mail
+           </p>
         </div>
+
       </div>
     </div>
   );
