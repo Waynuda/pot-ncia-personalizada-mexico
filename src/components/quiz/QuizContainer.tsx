@@ -594,25 +594,31 @@ const QuizContainer: React.FC = () => {
 
       case 32:
         return (
-          <EducativeSlide
-            title="Baseado em décadas de pesquisa científica"
-            description="Nosso método é fundamentado em estudos das maiores universidades do mundo sobre saúde sexual masculina e fortalecimento do assoalho pélvico."
-            visual={
-              <div className="bg-accent rounded-2xl p-6 space-y-4">
-                <div className="grid grid-cols-3 gap-4">
-                  {["Cambridge", "Harvard", "Oxford"].map((uni, i) => (
-                    <div key={uni} className="flex flex-col items-center gap-2" style={{ animation: `bounceIn 0.4s ease-out ${i * 150}ms both` }}>
-                      <div className="w-14 h-14 rounded-full bg-background border-2 border-border flex items-center justify-center">
-                        <Brain className="w-6 h-6 text-primary" />
-                      </div>
-                      <span className="text-[10px] font-bold text-foreground">{uni}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            }
-            onContinue={() => goNext()}
-          />
+          <div className="space-y-6 text-center">
+            <div className="flex justify-center" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
+              <span className="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border border-primary/20">
+                <Shield className="w-3.5 h-3.5" /> Você está em boas mãos
+              </span>
+            </div>
+            <div className="space-y-3" style={{ animation: "fadeInUp 0.4s ease-out 100ms both" }}>
+              <h2 className="text-xl font-bold text-foreground leading-snug">
+                Baseado em décadas de pesquisa científica
+              </h2>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Nosso método é fundamentado em estudos das maiores universidades do mundo sobre saúde sexual masculina e fortalecimento do assoalho pélvico.
+              </p>
+            </div>
+            <div style={{ animation: "fadeInUp 0.4s ease-out 200ms both" }}>
+              <img src="/univercidade.png" alt="Universidades" className="w-full object-contain rounded-2xl drop-shadow-sm" loading="lazy" />
+            </div>
+            <button
+              onClick={() => goNext()}
+              className="w-full py-3.5 rounded-xl bg-primary text-primary-foreground font-semibold text-base transition-all duration-300 hover:brightness-110 active:scale-[0.98] animate-pulse-slow"
+              style={{ animation: "fadeInUp 0.4s ease-out 300ms both" }}
+            >
+              Continuar
+            </button>
+          </div>
         );
 
       default:
