@@ -395,24 +395,31 @@ const QuizContainer: React.FC = () => {
 
       case 19:
         return (
-          <EducativeSlide
-            title="84% dos usuários melhoraram significativamente"
-            description=""
-            visual={
-              <div className="bg-accent rounded-2xl p-5 text-left space-y-3">
-                <div className="flex gap-1">
-                  {[1,2,3,4,5].map(s => (
-                    <Star key={s} className="w-4 h-4 fill-primary text-primary" />
-                  ))}
-                </div>
-                <p className="text-sm text-foreground italic">
-                  "Depois de 3 semanas seguindo o plano, minha confiança mudou completamente. Consigo durar muito mais e minha parceira percebeu a diferença. Recomendo de olhos fechados."
-                </p>
-                <p className="text-xs font-bold text-foreground">— Rodrigo S., 34 anos</p>
-              </div>
-            }
-            onContinue={() => goNext()}
-          />
+          <div className="space-y-6 text-center">
+            <div className="space-y-4" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
+              <p className="font-bold text-foreground text-xl leading-snug">
+                A qualidade da ereção está diretamente ligada à força dos músculos do assoalho pélvico.
+              </p>
+            </div>
+            <div style={{ animation: "fadeInUp 0.4s ease-out 150ms both" }}>
+              <img src="/musculo.png" alt="Músculo pélvico" className="w-full object-cover rounded-2xl drop-shadow-sm" loading="lazy" />
+            </div>
+            <div className="space-y-3" style={{ animation: "fadeInUp 0.4s ease-out 250ms both" }}>
+              <p className="text-sm text-foreground leading-relaxed">
+                Um dos três principais músculos dessa região, essencial para a saúde sexual masculina, <strong>é o músculo bulbocavernoso</strong>.
+              </p>
+              <p className="text-sm text-foreground leading-relaxed">
+                Ele permite que o pênis se encha de sangue e mantenha a firmeza.
+              </p>
+            </div>
+            <button
+              onClick={() => goNext()}
+              className="w-full py-3.5 rounded-xl bg-primary text-primary-foreground font-semibold text-base transition-all duration-300 hover:brightness-110 active:scale-[0.98] animate-pulse-slow"
+              style={{ animation: "fadeInUp 0.4s ease-out 350ms both" }}
+            >
+              Continuar
+            </button>
+          </div>
         );
 
       case 20:
