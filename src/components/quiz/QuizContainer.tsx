@@ -8,10 +8,6 @@ import ComparisonChart from "./ComparisonChart";
 import CheckoutPage from "./CheckoutPage";
 import { Timer, Heart, Zap, Shield, Dumbbell, Brain, Users, Clock, Activity, Eye, Coffee, Cigarette, Wine, Candy, Utensils, Briefcase, Home, Footprints, HardHat, Monitor, Star } from "lucide-react";
 
-import age1830 from "@/assets/age-18-30.png";
-import age3145 from "@/assets/age-31-45.png";
-import age4655 from "@/assets/age-46-55.png";
-import age56plus from "@/assets/age-56-plus.png";
 import bodySlim from "@/assets/body-slim.png";
 import bodyMedium from "@/assets/body-medium.png";
 import bodyOverweight from "@/assets/body-overweight.png";
@@ -64,10 +60,10 @@ const QuizContainer: React.FC = () => {
   }
 
   const ageOptions = [
-    { label: "18-30 anos", img: age1830 },
-    { label: "31-45 anos", img: age3145 },
-    { label: "46-55 anos", img: age4655 },
-    { label: "+56 anos", img: age56plus },
+    { label: "18-30 anos", img: "/18.png" },
+    { label: "31-45 anos", img: "/31.png" },
+    { label: "46-55 anos", img: "/46.png" },
+    { label: "+56 anos", img: "/56.png" },
   ];
 
   const bodyOptions = [
@@ -99,7 +95,7 @@ const QuizContainer: React.FC = () => {
                   }`}
                   style={{ animation: `fadeInUp 0.4s ease-out ${i * 80}ms both` }}
                 >
-                  <img src={opt.img} alt={opt.label} className="w-20 h-20 object-contain" loading="lazy" width={512} height={512} />
+                  <img src={opt.img} alt={opt.label} className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 object-contain drop-shadow-sm mb-1" loading="lazy" width={512} height={512} />
                   <p className="font-medium text-sm text-foreground text-center">{opt.label}</p>
                 </div>
               ))}
