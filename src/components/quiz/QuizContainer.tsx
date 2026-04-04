@@ -197,26 +197,29 @@ const QuizContainer: React.FC = () => {
 
       case 5:
         return (
-          <EducativeSlide
-            title="A força vem dos músculos do assoalho pélvico"
-            description="O assoalho pélvico é o grupo muscular responsável pelo controle ejaculatório e pela firmeza da ereção. Quando fortalecido corretamente, você ganha controle total sobre seu desempenho."
-            visual={
-              <div className="bg-accent rounded-2xl p-6">
-                <div className="relative mx-auto w-48 h-48">
-                  <div className="absolute inset-0 rounded-full border-4 border-primary/20" />
-                  <div className="absolute inset-4 rounded-full border-4 border-primary/40" />
-                  <div className="absolute inset-8 rounded-full border-4 border-primary/60" />
-                  <div className="absolute inset-12 rounded-full bg-primary/20 flex items-center justify-center">
-                    <Zap className="w-8 h-8 text-primary" />
-                  </div>
-                  <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-[10px] font-bold px-3 py-1 rounded-full">
-                    Assoalho Pélvico
-                  </div>
-                </div>
-              </div>
-            }
-            onContinue={() => goNext()}
-          />
+          <div className="space-y-6 text-center">
+            <div className="space-y-4" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
+              <p className="font-bold text-foreground text-lg leading-snug">
+                Seu jeito de durar mais tempo vem da força e saúde dos músculos do assoalho pélvico.
+              </p>
+              <p className="font-bold text-foreground text-lg leading-snug">
+                E quanto mais você envelhece, mais fraco fica seu músculo masculino.
+              </p>
+              <p className="font-bold text-foreground text-lg leading-snug">
+                Músculos fortes ajudam você a ter ereções duras novamente, controlar a ejaculação e a durar mais na cama.
+              </p>
+            </div>
+            <div style={{ animation: "fadeInUp 0.4s ease-out 150ms both" }}>
+              <img src="/etapa 5.png" alt="Músculo pélvico" className="w-full object-cover rounded-2xl drop-shadow-sm" loading="lazy" />
+            </div>
+            <button
+              onClick={() => goNext()}
+              className="w-full py-3.5 rounded-xl bg-primary text-primary-foreground font-semibold text-base transition-all duration-300 hover:brightness-110 active:scale-[0.98] animate-pulse-slow"
+              style={{ animation: "fadeInUp 0.4s ease-out 300ms both" }}
+            >
+              Continuar
+            </button>
+          </div>
         );
 
       case 6:
