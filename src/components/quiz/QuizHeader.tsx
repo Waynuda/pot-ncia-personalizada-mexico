@@ -17,15 +17,12 @@ const QuizHeader: React.FC<QuizHeaderProps> = ({ currentStep, totalSteps }) => {
             <span className="text-foreground ml-1">MEN</span>
           </h1>
         </div>
-        <div className="relative w-full h-2 bg-secondary rounded-full overflow-hidden">
+        <div className="relative w-full h-2 bg-secondary rounded-full overflow-hidden mt-1.5">
           <div
             className="absolute top-0 left-0 h-full bg-primary rounded-full transition-all duration-700 ease-out"
             style={{ width: `${progress}%` }}
           />
         </div>
-        <p className="text-xs text-muted-foreground text-center mt-1.5">
-          {currentStep} de {totalSteps}
-        </p>
       </div>
     </div>
   );

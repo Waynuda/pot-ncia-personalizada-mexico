@@ -77,7 +77,12 @@ const QuizContainer: React.FC = () => {
       case 1:
         return (
           <div className="space-y-4">
-            <h2 className="text-lg font-bold text-foreground text-center leading-tight" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
+            <div className="flex justify-center" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
+              <span className="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                <Clock className="w-3.5 h-3.5" /> Quiz de 2 minutos
+              </span>
+            </div>
+            <h2 className="text-lg font-bold text-foreground text-center leading-tight" style={{ animation: "fadeInUp 0.4s ease-out 100ms both" }}>
               Plano de exercícios para elevar sua potência sexual de acordo com sua idade
             </h2>
             <p className="text-sm text-muted-foreground text-center" style={{ animation: "fadeInUp 0.4s ease-out 100ms both" }}>
