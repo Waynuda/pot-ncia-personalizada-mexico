@@ -120,6 +120,36 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
           </div>
         </div>
 
+        {/* Algorithm and Benefits Text */}
+        <div className="space-y-6 py-6" style={{ animation: "fadeInUp 0.5s ease-out 450ms both" }}>
+          <div className="text-center">
+            <p className="text-xl font-bold text-gray-900 leading-tight">
+              (Aqui está seu plano para aumentar a potência sexual)
+            </p>
+          </div>
+          
+          <div className="space-y-4 text-gray-700 text-sm sm:text-base leading-relaxed text-center sm:text-left">
+            <p>
+              Nosso algoritmo inteligente gerou um plano totalmente personalizado com base nos seus objetivos.
+            </p>
+            <p>
+              Com os exercícios personalizados de Kegel você melhora as cinco áreas essenciais da saúde sexual para conseguir durar mais, ter melhores ereções e mais controle na hora do sexo.
+            </p>
+            <p>
+              Cobertura completa das cinco áreas essenciais da saúde sexual para ajudar você a durar mais, melhorar ereções e ter mais controle.
+            </p>
+            <p>
+              Todos os métodos são aprovados e apoiados pela <strong>Universidade de Harvard</strong>, junto aos principais Médicos de todo o mundo.
+            </p>
+            <p>
+              Tudo porque Nexor Men te entrega as ferramentas práticas e o suporte contínuo com os principais especialistas na área sexual masculina para fortalecer sua confiança e evoluir dia após dia.
+            </p>
+            <p>
+              Tudo para fazer em casa, no seu ritmo, sem constrangimento e sem usar nenhum remédio.
+            </p>
+          </div>
+        </div>
+
         {/* Benefits List */}
         <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-100" style={{ animation: "fadeInUp 0.5s ease-out 500ms both" }}>
           <h3 className="text-2xl font-bold text-gray-900 text-center mb-6">O que você vai ter acesso?</h3>
