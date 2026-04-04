@@ -122,13 +122,13 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
 
         {/* Algorithm and Benefits Text */}
         <div className="space-y-6 py-6" style={{ animation: "fadeInUp 0.5s ease-out 450ms both" }}>
-          <div className="bg-white rounded-2xl p-2 shadow-sm border border-gray-100 overflow-hidden">
-             <img src="/etapa_3.png" alt="Plano de Ação" className="w-full object-cover rounded-xl" />
+          <div className="bg-white rounded-2xl p-2 shadow-sm border border-gray-100 overflow-hidden max-h-[320px] flex items-end">
+             <img src="/etapa_3_opt.jpg" alt="Plano de Ação" className="w-full object-cover rounded-xl object-bottom" />
           </div>
           
           <div className="text-center">
             <p className="text-xl font-bold text-gray-900 leading-tight">
-              (Aqui está seu plano para aumentar a potência sexual)
+              Aqui está seu plano para aumentar a potência sexual
             </p>
           </div>
           
