@@ -61,7 +61,7 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
 
         {/* Imagem Antes e Depois */}
         <div className="bg-white rounded-2xl p-2 shadow-sm border border-gray-100 overflow-hidden" style={{ animation: "fadeInUp 0.5s ease-out 200ms both" }}>
-           <img src="/Para pagina de vendas.png" alt="Transformação Esperada" className="w-full object-cover rounded-xl" />
+           <img src="/antes-depois.jpg" alt="Transformação Esperada" className="w-full object-cover rounded-xl" />
         </div>
 
         {/* Progress Charts */}
