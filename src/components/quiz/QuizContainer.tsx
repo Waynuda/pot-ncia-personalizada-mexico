@@ -199,12 +199,18 @@ const QuizContainer: React.FC = () => {
         return (
           <div className="space-y-6 text-center">
             <div className="space-y-4" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
-              <p className="font-bold text-foreground text-xl leading-snug">
-                O programa de Exercícios da Viren ajuda a fortalecer os músculos do assoalho pélvico e pode aumentar o tempo médio de relação em até 7 vezes
+              <p className="font-bold text-foreground text-lg leading-snug">
+                Seu jeito de durar mais tempo vem da força e saúde dos músculos do assoalho pélvico.
+              </p>
+              <p className="font-bold text-foreground text-lg leading-snug">
+                E quanto mais você envelhece, mais fraco fica seu músculo masculino.
+              </p>
+              <p className="font-bold text-foreground text-lg leading-snug">
+                Músculos fortes ajudam você a ter ereções duras novamente, controlar a ejaculação e a durar mais na cama.
               </p>
             </div>
-            <div className="relative overflow-hidden rounded-2xl drop-shadow-sm h-64 sm:h-72" style={{ animation: "fadeInUp 0.4s ease-out 150ms both" }}>
-              <img src="/grafico.png" alt="Gráfico de desempenho" className="absolute bottom-0 left-0 w-full h-[125%] object-cover object-bottom" loading="lazy" />
+            <div style={{ animation: "fadeInUp 0.4s ease-out 150ms both" }}>
+              <img src="/etapa 5.png" alt="Músculo pélvico" className="w-full object-cover rounded-2xl drop-shadow-sm" loading="lazy" />
             </div>
             <button
               onClick={() => goNext()}
@@ -286,20 +292,23 @@ const QuizContainer: React.FC = () => {
 
       case 12:
         return (
-          <EducativeSlide
-            title="Aumento de até 7x no tempo médio com o Plano Nexor MEN"
-            description="Nosso método exclusivo, baseado em ciência, entrega resultados muito superiores aos concorrentes."
-            visual={
-              <ComparisonChart
-                data={[
-                  { label: "Tempo de duração", before: 15, after: 85 },
-                  { label: "Controle ejaculatório", before: 20, after: 90 },
-                  { label: "Firmeza da ereção", before: 30, after: 88 },
-                ]}
-              />
-            }
-            onContinue={() => goNext()}
-          />
+          <div className="space-y-6 text-center">
+            <div className="space-y-4" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
+              <p className="font-bold text-foreground text-xl leading-snug">
+                O programa de Exercícios da Viren ajuda a fortalecer os músculos do assoalho pélvico e pode aumentar o tempo médio de relação em até 7 vezes
+              </p>
+            </div>
+            <div className="relative overflow-hidden rounded-2xl drop-shadow-sm h-64 sm:h-72" style={{ animation: "fadeInUp 0.4s ease-out 150ms both" }}>
+              <img src="/grafico.png" alt="Gráfico de desempenho" className="absolute bottom-0 left-0 w-full h-[125%] object-cover object-bottom" loading="lazy" />
+            </div>
+            <button
+              onClick={() => goNext()}
+              className="w-full py-3.5 rounded-xl bg-primary text-primary-foreground font-semibold text-base transition-all duration-300 hover:brightness-110 active:scale-[0.98] animate-pulse-slow"
+              style={{ animation: "fadeInUp 0.4s ease-out 300ms both" }}
+            >
+              Continuar
+            </button>
+          </div>
         );
 
       case 13:
