@@ -199,18 +199,12 @@ const QuizContainer: React.FC = () => {
         return (
           <div className="space-y-6 text-center">
             <div className="space-y-4" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
-              <p className="font-bold text-foreground text-lg leading-snug">
-                Seu jeito de durar mais tempo vem da força e saúde dos músculos do assoalho pélvico.
-              </p>
-              <p className="font-bold text-foreground text-lg leading-snug">
-                E quanto mais você envelhece, mais fraco fica seu músculo masculino.
-              </p>
-              <p className="font-bold text-foreground text-lg leading-snug">
-                Músculos fortes ajudam você a ter ereções duras novamente, controlar a ejaculação e a durar mais na cama.
+              <p className="font-bold text-foreground text-xl leading-snug">
+                O programa de Exercícios da Viren ajuda a fortalecer os músculos do assoalho pélvico e pode aumentar o tempo médio de relação em até 7 vezes
               </p>
             </div>
-            <div style={{ animation: "fadeInUp 0.4s ease-out 150ms both" }}>
-              <img src="/etapa 5.png" alt="Músculo pélvico" className="w-full object-cover rounded-2xl drop-shadow-sm" loading="lazy" />
+            <div className="relative overflow-hidden rounded-2xl drop-shadow-sm h-64 sm:h-72" style={{ animation: "fadeInUp 0.4s ease-out 150ms both" }}>
+              <img src="/grafico.png" alt="Gráfico de desempenho" className="absolute bottom-0 left-0 w-full h-[125%] object-cover object-bottom" loading="lazy" />
             </div>
             <button
               onClick={() => goNext()}
