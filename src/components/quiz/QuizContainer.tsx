@@ -134,10 +134,10 @@ const QuizContainer: React.FC = () => {
                   }`}
                   style={{ animation: `fadeInUp 0.4s ease-out ${i * 80}ms both` }}
                 >
-                  <img src={opt.img} alt={opt.label} className="w-16 h-16 object-contain flex-shrink-0" loading="lazy" width={512} height={512} />
+                  <img src={opt.img} alt={opt.label} className="w-28 h-28 sm:w-36 sm:h-36 object-contain flex-shrink-0 drop-shadow-sm transition-transform group-hover:scale-105" loading="lazy" width={512} height={512} />
                   <div className="flex-1">
-                    <p className="font-medium text-sm text-foreground">{opt.label}</p>
-                    <p className="text-xs text-muted-foreground mt-0.5">{opt.sub}</p>
+                    <p className="font-semibold text-lg text-foreground">{opt.label}</p>
+                    <p className="text-sm text-muted-foreground mt-0.5">{opt.sub}</p>
                   </div>
                   <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all duration-300 flex-shrink-0 ${
                     answers[2] === opt.label ? "border-primary bg-primary" : "border-muted-foreground/30"
