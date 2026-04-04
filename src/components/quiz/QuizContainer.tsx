@@ -156,31 +156,21 @@ const QuizContainer: React.FC = () => {
 
       case 3:
         return (
-          <EducativeSlide
-            title="Mais de 1 milhão de homens brasileiros escolheram o Plano Nexor MEN"
-            description="Veja a transformação real: do Dia 1 ao Dia 24, nossos usuários relatam melhorias significativas em controle, resistência e confiança."
-            visual={
-              <div className="bg-accent rounded-2xl p-6 space-y-3">
-                <div className="flex justify-between items-end h-32 gap-2">
-                  {[
-                    { day: "Dia 1", h: 20 },
-                    { day: "Dia 7", h: 40 },
-                    { day: "Dia 14", h: 65 },
-                    { day: "Dia 24", h: 95 },
-                  ].map((bar, i) => (
-                    <div key={bar.day} className="flex-1 flex flex-col items-center gap-1">
-                      <div
-                        className="w-full bg-primary rounded-t-lg transition-all duration-1000 ease-out"
-                        style={{ height: `${bar.h}%`, animation: `growBar 1s ease-out ${i * 200}ms both`, "--bar-width": `${bar.h}%` } as any}
-                      />
-                      <span className="text-[10px] font-medium text-muted-foreground">{bar.day}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            }
-            onContinue={() => goNext()}
-          />
+          <div className="space-y-6 text-center">
+            <div style={{ animation: "fadeInUp 0.4s ease-out both" }}>
+              <img src="/etapa 3.png" alt="Resultados" className="w-full object-cover rounded-2xl drop-shadow-sm" loading="lazy" />
+            </div>
+            <p className="text-xl font-bold text-foreground leading-tight" style={{ animation: "fadeInUp 0.4s ease-out 150ms both" }}>
+              Nós ajudamos mais de 150.000 homens a melhorar seu desempenho sexual
+            </p>
+            <button
+              onClick={() => goNext()}
+              className="w-full py-3.5 rounded-xl bg-primary text-primary-foreground font-semibold text-base transition-all duration-300 hover:brightness-110 active:scale-[0.98] animate-pulse-slow"
+              style={{ animation: "fadeInUp 0.4s ease-out 300ms both" }}
+            >
+              Continuar
+            </button>
+          </div>
         );
 
       case 4:
