@@ -14,6 +14,61 @@ import bodyOverweight from "@/assets/body-overweight.png";
 
 const TOTAL_STEPS = 32;
 
+const ProcessingScreen: React.FC<{ onComplete: () => void }> = ({ onComplete }) => {
+  const [progress, setProgress] = useState(0);
+
+  React.useEffect(() => {
+    const duration = 10000; // 10 seconds
+    const intervalTime = 50;
+    const steps = duration / intervalTime;
+    let currentStep = 0;
+
+    const interval = setInterval(() => {
+      currentStep++;
+      setProgress(Math.min(100, Math.floor((currentStep / steps) * 100)));
+      if (currentStep >= steps) {
+        clearInterval(interval);
+        setTimeout(onComplete, 500);
+      }
+    }, intervalTime);
+
+    return () => clearInterval(interval);
+  }, [onComplete]);
+
+  return (
+    <div className="min-h-screen bg-background flex flex-col items-center justify-center p-6 text-center space-y-8 animate-in fade-in duration-500">
+      <div className="space-y-4">
+         <h1 className="text-2xl font-bold text-foreground">Analisando suas respostas...</h1>
+         <p className="text-muted-foreground max-w-xs mx-auto">
+           Estamos criando o seu Plano de Treino de Exercícios Kegel personalizado.
+         </p>
+      </div>
+
+      <div className="relative w-48 h-48">
+        <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="45" fill="transparent" stroke="currentColor" strokeWidth="8" className="text-muted/20" />
+          <circle cx="50" cy="50" r="45" fill="transparent" stroke="currentColor" strokeWidth="8" className="text-primary transition-all duration-75 ease-linear" strokeDasharray="283" strokeDashoffset={283 - (progress / 100) * 283} />
+        </svg>
+        <div className="absolute inset-0 flex items-center justify-center flex-col">
+          <span className="text-4xl font-bold text-foreground">{progress}%</span>
+        </div>
+      </div>
+
+      <div className="space-y-3 text-sm text-muted-foreground w-full max-w-xs text-left mx-auto bg-card border-2 border-border p-4 rounded-xl shadow-sm">
+         <p className="flex items-center gap-2">
+           <Activity className={progress > 15 ? "text-primary transition-colors" : "text-muted transition-colors"} size={16} /> Verificando idade e biotipo...
+         </p>
+         <p className="flex items-center gap-2">
+           <Activity className={progress > 45 ? "text-primary transition-colors" : "text-muted transition-colors"} size={16} /> Testando força do músculo pélvico...
+         </p>
+         <p className="flex items-center gap-2">
+           <Activity className={progress > 75 ? "text-primary transition-colors" : "text-muted transition-colors"} size={16} /> Estruturando rotina avançada...
+         </p>
+      </div>
+    </div>
+  );
+};
+
 const QuizContainer: React.FC = () => {
   const [step, setStep] = useState(1);
   const [answers, setAnswers] = useState<Record<number, any>>({});
@@ -28,7 +83,7 @@ const QuizContainer: React.FC = () => {
     setAnimating(true);
     setDirection("exit");
     setTimeout(() => {
-      setStep((s) => Math.min(s + 1, TOTAL_STEPS + 1));
+      setStep((s) => Math.min(s + 1, TOTAL_STEPS + 2));
       setDirection("enter");
       setTimeout(() => setAnimating(false), 400);
     }, 300);
@@ -55,7 +110,11 @@ const QuizContainer: React.FC = () => {
     setTimeout(() => goNext(), 500);
   };
 
-  if (step > TOTAL_STEPS) {
+  if (step === TOTAL_STEPS + 1) {
+    return <ProcessingScreen onComplete={() => setStep(TOTAL_STEPS + 2)} />;
+  }
+
+  if (step > TOTAL_STEPS + 1) {
     return <CheckoutPage name={answers[31] || "Campeão"} />;
   }
 
