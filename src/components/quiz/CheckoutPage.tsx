@@ -122,7 +122,7 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
 
         {/* Algorithm and Benefits Text */}
         <div className="space-y-6 py-6" style={{ animation: "fadeInUp 0.5s ease-out 450ms both" }}>
-          <div className="bg-white rounded-2xl p-2 shadow-sm border border-gray-100 overflow-hidden max-h-[320px] flex items-end">
+          <div className="bg-white rounded-2xl p-2 shadow-sm border border-gray-100 overflow-hidden max-h-[600px] flex items-end">
              <img src="/etapa_3_opt.jpg" alt="Plano de Ação" className="w-full object-cover rounded-xl object-bottom" />
           </div>
           
@@ -197,6 +197,13 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
               </li>
             ))}
           </ul>
+        </div>
+
+        {/* Secondary CTA Button */}
+        <div className="pt-4" style={{ animation: "fadeInUp 0.5s ease-out 550ms both" }}>
+           <button className="w-full py-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-extrabold text-xl uppercase transition-all shadow-[0_8px_20px_-6px_rgba(22,163,74,0.5)] hover:shadow-[0_12px_25px_-6px_rgba(22,163,74,0.6)] hover:-translate-y-1 active:translate-y-0 active:shadow-none">
+             Obter o meu plano agora
+           </button>
         </div>
         
         {/* Testimonials */}
