@@ -108,6 +108,10 @@
   animation: marquee 60s linear infinite;
 }
 
+.animate-marquee-stop-go {
+  animation: marquee 25s linear infinite;
+}
+
 .animate-pulse-slow {
   animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }

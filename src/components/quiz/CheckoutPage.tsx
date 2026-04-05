@@ -220,10 +220,10 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
           </div>
         </div>
 
-        {/* University Seals */}
+        {/* Authority Logo with background */}
         <div className="pt-8 text-center" style={{ animation: "fadeInUp 0.5s ease-out 600ms both" }}>
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 max-w-lg mx-auto">
-             <img src="/univercidade.png" alt="Apoiado por Grandes Universidades" className="w-full h-auto object-contain opacity-90" />
+          <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 max-w-sm mx-auto overflow-hidden">
+             <img src="/logo-fundo.jpg" alt="Viren - Autoridade" className="w-full h-auto object-contain rounded-lg" />
           </div>
         </div>
 
@@ -233,14 +233,14 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
             Alguns dos nossos pacientes confirmam que escolher Viren foi a melhor decisão de suas vidas:
           </h3>
           
-          <div className="relative overflow-hidden py-4 -mx-4 sm:mx-0">
+          <div className="relative overflow-hidden py-6 -mx-4 sm:mx-0 bg-white/40 border-y border-gray-100">
             {/* Gradient Overlays for smooth entry/exit */}
-            <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-gray-50 to-transparent z-10 hidden sm:block"></div>
-            <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-gray-50 to-transparent z-10 hidden sm:block"></div>
+            <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-gray-50 to-transparent z-10 hidden sm:block"></div>
+            <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-gray-50 to-transparent z-10 hidden sm:block"></div>
             
-            <div className="flex animate-marquee whitespace-nowrap gap-4">
+            <div className="flex animate-marquee-stop-go whitespace-nowrap gap-6">
               {[...Array(2)].map((_, groupIndex) => (
-                <div key={groupIndex} className="flex gap-4 min-w-full">
+                <div key={groupIndex} className="flex gap-6 min-w-full items-center">
                   {[
                     { n: "Carlos M.", c: "Melhor decisão que tomei!" },
                     { n: "Ricardo Silva", c: "Resultados impressionantes em 2 semanas." },
