@@ -112,7 +112,6 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
                   <span className="text-xs text-gray-600 font-medium">Checkout Seguro</span>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <ShieldCheck className="w-4 h-4 text-green-600" />
                   <span className="text-xs text-gray-600 font-medium">Garantia 30 dias</span>
                 </div>
               </div>
@@ -323,7 +322,6 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
         <div className="bg-blue-50 border-2 border-blue-100 rounded-2xl p-6 sm:p-8 text-center space-y-4 shadow-sm relative overflow-hidden" style={{ animation: "fadeInUp 0.5s ease-out 700ms both" }}>
           <div className="absolute top-0 right-0 w-32 h-32 bg-blue-100 rounded-bl-full -mr-10 -mt-10 opacity-50 pointer-events-none"></div>
           
-          <ShieldCheck className="w-16 h-16 text-blue-600 mx-auto" />
           <h3 className="text-2xl font-extrabold text-blue-900">Garantia Incondicional de 30 Dias</h3>
           <p className="text-sm text-blue-800 max-w-md mx-auto leading-relaxed">
             Acreditamos tanto no nosso plano que oferecemos resultados visíveis ou seu dinheiro de volta. Você tem 30 dias para testar a rotina. Se não notar uma evolução clara na sua potência, devolvemos 100% do seu investimento. Sem perguntas.
