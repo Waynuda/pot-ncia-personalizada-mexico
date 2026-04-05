@@ -96,7 +96,6 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
                    <span className="text-3xl font-bold text-green-700">€</span>
                    <span className="text-5xl font-black text-green-600 tracking-tighter">12,07</span>
                  </div>
-                 <div className="text-xs text-gray-500 mt-1">Acesso vitalício</div>
               </div>
             </div>
 
