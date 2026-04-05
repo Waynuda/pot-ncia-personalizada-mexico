@@ -33,7 +33,7 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
   return (
     <div className="min-h-screen bg-gray-50 pb-16 font-sans">
       {/* Header Banner */}
-      <div className="bg-white py-4 shadow-sm flex justify-center items-center sticky top-0 z-50">
+      <div className="bg-white py-4 shadow-sm flex justify-center items-center relative z-10 border-b border-gray-100">
         <div className="flex items-center gap-2">
           <img src="/logo.png" alt="Nexor MEN" className="h-8" />
           <span className="text-xl font-black text-gray-900 tracking-tight"><span className="text-primary">NEXOR</span> MEN</span>
@@ -90,13 +90,13 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
               </div>
 
               <div className="bg-green-50 rounded-xl p-4 w-full md:w-auto text-right border border-green-100 flex flex-col justify-center items-end">
-                 <div className="text-sm text-gray-500 line-through">De R$ 194</div>
+                 <div className="text-sm text-gray-500 line-through">De €24</div>
                  <div className="text-xs text-gray-500 mb-1">Por apenas</div>
-                 <div className="flex items-baseline justify-end gap-1">
-                   <span className="text-2xl font-bold text-green-700">R$</span>
-                   <span className="text-5xl font-black text-green-600 tracking-tighter">97</span>
+                 <div className="flex items-baseline justify-end gap-0.5">
+                   <span className="text-3xl font-bold text-green-700">€</span>
+                   <span className="text-5xl font-black text-green-600 tracking-tighter">12,07</span>
                  </div>
-                 <div className="text-xs text-gray-500 mt-1">ou 12x de R$ 9,74</div>
+                 <div className="text-xs text-gray-500 mt-1">Acesso vitalício</div>
               </div>
             </div>
 
