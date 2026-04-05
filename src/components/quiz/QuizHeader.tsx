@@ -2,13 +2,14 @@ import React from "react";
 interface QuizHeaderProps {
   currentStep: number;
   totalSteps: number;
+  isSticky?: boolean;
 }
 
-const QuizHeader: React.FC<QuizHeaderProps> = ({ currentStep, totalSteps }) => {
-  const progress = (currentStep / totalSteps) * 100;
+const QuizHeader: React.FC<QuizHeaderProps> = ({ currentStep, totalSteps, isSticky = true }) => {
+  const progress = Math.min(100, (currentStep / totalSteps) * 100);
 
   return (
-    <div className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border pb-3 pt-4 px-4">
+    <div className={`${isSticky ? 'sticky top-0 z-50 bg-background/95 backdrop-blur-sm' : 'relative bg-background'} border-b border-border pb-3 pt-4 px-4 transition-all duration-300`}>
       <div className="max-w-lg mx-auto">
         <div className="flex flex-col items-center justify-center mb-3 gap-1">
           <img src="/logo.png" alt="Nexor MEN logo" className="w-16 h-16 object-contain" />

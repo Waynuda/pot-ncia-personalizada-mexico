@@ -687,7 +687,7 @@ const QuizContainer: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      <QuizHeader currentStep={step} totalSteps={TOTAL_STEPS} />
+      <QuizHeader currentStep={step} totalSteps={TOTAL_STEPS} isSticky={step <= TOTAL_STEPS + 1} />
       <div className="flex-1 flex flex-col max-w-lg mx-auto w-full px-4 py-6">
         <div className={direction === "enter" ? "quiz-transition-enter" : "quiz-transition-exit"} key={step}>
           {renderStep()}
