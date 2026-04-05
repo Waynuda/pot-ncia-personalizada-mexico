@@ -255,43 +255,7 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
                     { n: "Cláudio Ramos", c: "Sinto-me 10 anos mais jovem." },
                     { n: "Sérgio Lima", c: "Ótimo suporte e material de elite." },
                     { n: "Marcelo D.", c: "As sessões são curtas mas eficientes." },
-                    { n: "Eduardo F.", c: "Vale cada centavo gasto!" },
-                    { n: "Alexandre P.", c: "Sigo o plano e os resultados são reais." },
-                    { n: "Beto Souza", c: "Mudou minha rotina para melhor." },
-                    { n: "Henrique G.", c: "Muito fácil de fazer em casa." },
-                    { n: "Tiago L.", c: "Duração aumentou visivelmente." },
-                    { n: "Bruno M.", c: "Surpreendente a diferença." },
-                    { n: "Gustavo N.", c: "Nota máxima pela clareza do plano." },
-                    { n: "Vitor K.", c: "Eficaz e sem enrolação." },
-                    { n: "Daniel S.", c: "O melhor método que já testei." },
-                    { n: "Leandro B.", c: "Totalmente natural e seguro." },
-                    { n: "Rafael T.", c: "Minha parceira adorou os resultados." },
-                    { n: "Felipe R.", c: "Exercícios simples que funcionam muito bem." },
-                    { n: "Douglas C.", c: "Recuperei minha virilidade e foco." },
-                    { n: "Alan V.", c: "Excelente custo benefício." },
-                    { n: "Caio X.", c: "Guia completo e muito prático." },
-                    { n: "Renato Z.", c: "Estou indicando para todos os amigos." },
-                    { n: "Igor Q.", c: "Em 4 semanas vida nova!" },
-                    { n: "Murilo E.", c: "Confiança lá no alto agora." },
-                    { n: "Otávio J.", c: "Realmente aprovado por médicos." },
-                    { n: "Samuel Y.", c: "Técnicas de respiração mudaram tudo." },
-                    { n: "Lucas H.", c: "Plano personalizado de verdade." },
-                    { n: "Pedro W.", c: "Fácil, rápido e eficiente." },
-                    { n: "Thiago O.", c: "Qualidade de vida sexual subiu 100%." },
-                    { n: "Mateus I.", c: "Não perca tempo, funciona mesmo." },
-                    { n: "Diego U.", c: "A técnica de Harvard é fenomenal." },
-                    { n: "Ruan P.", c: "Sinto-me mais seguro nas relações." },
-                    { n: "Gabriel L.", c: "Tudo explicado passo a passo." },
-                    { n: "Erick M.", c: "O melhor investimento do ano." },
-                    { n: "Hugo K.", c: "Mudança radical em menos de um mês." },
-                    { n: "Yuri B.", c: "Suporte excelente para as dúvidas." },
-                    { n: "Luan G.", c: "Minha vida sexual renasceu." },
-                    { n: "Júlio P.", c: "Recomendado por quem entende." },
-                    { n: "Mauro S.", c: "Fiz o teste e comprovei na prática." },
-                    { n: "Nilo F.", c: "O algoritmo acertou em cheio no plano." },
-                    { n: "Cícero D.", c: "Não vivo mais sem esses exercícios." },
-                    { n: "Ronaldo T.", c: "Mais energia e muito mais controle." },
-                    { n: "Wilson O.", c: "Excelente material, bem didático." }
+                    { n: "Eduardo F.", c: "Vale cada centavo gasto!" }
                   ].map((item, i) => (
                     <div key={i} className="inline-block bg-white border border-gray-100 rounded-xl px-4 py-3 shadow-sm shrink-0">
                       <div className="flex items-center gap-1.5 mb-1">
@@ -299,24 +263,6 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
                       </div>
                       <p className="text-xs font-bold text-gray-900 mb-0.5">{item.n}</p>
                       <p className="text-[11px] text-gray-600 whitespace-normal max-w-[200px] leading-tight">
-                        "{item.c}"
-                      </p>
-                    </div>
-                  ))}
-                  {/* Repeat some detailed ones to reach 100 total visuals or more */}
-                  {[
-                    { n: "Sérgio Mendes", c: "Confesso que estava cético, mas o guia de Oxford mudou minha percepção. Em 3 semanas já sinto um controle que nunca tive." },
-                    { n: "Paulo Henrique", c: "As técnicas de respiração são o diferencial. Consigo manter a calma e o foco totalmente agora." },
-                    { n: "Roberto Carlos", c: "Minha saúde sexual é outra. Além do desempenho, minha disposição geral melhorou muito com os treinos." },
-                    { n: "Juliano F.", c: "Excelente suporte! Tive uma dúvida no início e me responderam rápido. O plano é fácil de seguir e dá resultado." },
-                    { n: "Ailton M.", c: "Minha esposa notou a diferença na primeira semana. O Nexor Men realmente entrega o que promete." }
-                  ].map((item, i) => (
-                    <div key={`long-${i}`} className="inline-block bg-white border border-blue-50 rounded-xl px-4 py-3 shadow-md shrink-0 border-l-4 border-l-green-500">
-                      <div className="flex items-center gap-1.5 mb-1">
-                        {[1,2,3,4,5].map(s => <Star key={s} className="w-3 h-3 fill-yellow-400 text-yellow-400" />)}
-                      </div>
-                      <p className="text-xs font-bold text-gray-900 mb-0.5">{item.n}</p>
-                      <p className="text-[11px] text-gray-700 whitespace-normal max-w-[250px] leading-relaxed italic">
                         "{item.c}"
                       </p>
                     </div>
