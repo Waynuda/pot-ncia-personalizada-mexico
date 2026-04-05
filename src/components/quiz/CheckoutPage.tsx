@@ -274,6 +274,51 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
         </div>
         
 
+        {/* Closing Argument & Bonus Section */}
+        <div className="space-y-10 py-8 px-4" style={{ animation: "fadeInUp 0.5s ease-out 675ms both" }}>
+          <div className="space-y-6 text-center max-w-xl mx-auto">
+            <p className="text-xl font-bold text-gray-900 leading-tight">
+              Estamos ansiosos para você ser o próximo homem que foi transformado pelos nossos exercícios de Kegel.
+            </p>
+            <div className="space-y-4 text-gray-700 leading-relaxed text-base sm:text-lg">
+              <p>
+                Então faça a escolha certa. Se quiser continuar sem sua masculinidade, inseguro e esperando sua mulher terminar contigo, a escolha é sua.
+              </p>
+              <p className="font-medium text-gray-900">
+                Mas, se quiser tomar a decisão que um homem tomaria, sem nenhum risco, clique no botão abaixo e venha fazer parte do grupo de homens que dá trabalho na cama para a mulher.
+              </p>
+            </div>
+          </div>
+
+          {/* Surprise Gift Box */}
+          <div className="bg-orange-50 border-2 border-dashed border-orange-200 rounded-3xl p-6 sm:p-10 text-center relative overflow-hidden shadow-sm">
+            <div className="absolute -top-6 -right-6 w-24 h-24 bg-orange-100 rounded-full opacity-50"></div>
+            
+            <h4 className="text-2xl font-black text-orange-600 mb-4 uppercase tracking-wider">
+              🎁 Presente Surpresa:
+            </h4>
+            
+            <div className="space-y-4 text-gray-800 text-base sm:text-lg leading-relaxed max-w-lg mx-auto">
+              <p className="font-bold text-orange-900">
+                Durante as próximas 24 horas, temos um bônus reservado para novos clientes.
+              </p>
+              <p>
+                Os primeiros homens que aderirem ao programa vão receber um conteúdo extra, cuidadosamente selecionado para complementar os exercícios.
+              </p>
+              <p className="text-sm text-gray-600 italic">
+                Não vamos revelar já o que é — você vai receber todos os detalhes por e-mail após a confirmação.
+              </p>
+              <p className="font-bold text-gray-900 pt-2 text-xl">
+                Sem complicações.
+              </p>
+              <p className="text-orange-700 font-extrabold items-center justify-center gap-2 flex flex-col pt-4">
+                <span className="animate-bounce text-3xl">↓</span>
+                Clica no botão abaixo e finaliza o teu acesso
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* 30 Day Guarantee */}
         <div className="bg-blue-50 border-2 border-blue-100 rounded-2xl p-6 sm:p-8 text-center space-y-4 shadow-sm relative overflow-hidden" style={{ animation: "fadeInUp 0.5s ease-out 700ms both" }}>
           <div className="absolute top-0 right-0 w-32 h-32 bg-blue-100 rounded-bl-full -mr-10 -mt-10 opacity-50 pointer-events-none"></div>
