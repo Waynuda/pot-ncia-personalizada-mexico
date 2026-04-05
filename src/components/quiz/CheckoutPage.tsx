@@ -327,26 +327,6 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
           </div>
         </div>
         
-        {/* Testimonials */}
-        <div className="space-y-5" style={{ animation: "fadeInUp 0.5s ease-out 650ms both" }}>
-          <h3 className="text-2xl font-bold text-gray-900 text-center">Resultados de quem já testou</h3>
-          <div className="grid sm:grid-cols-2 gap-4">
-            {[
-              { name: "Carlos M.", age: 42, t: "Minha confiança mudou completamente. Consigo durar muito mais e minha esposa percebeu a diferença logo nas primeiras semanas." },
-              { name: "André L.", age: 38, t: "Esse foi o único método que realmente funcionou para mim sem nenhum efeito colateral indesejado. Vale cada centavo." }
-            ].map(t => (
-              <div key={t.name} className="bg-white border border-gray-100 rounded-2xl p-5 shadow-sm flex flex-col justify-between">
-                <div>
-                  <div className="flex gap-1 mb-3">
-                    {[1,2,3,4,5].map(s => <Star key={s} className="w-4 h-4 fill-yellow-400 text-yellow-400" />)}
-                  </div>
-                  <p className="text-sm text-gray-700 italic mb-4">"{t.t}"</p>
-                </div>
-                <p className="text-xs font-bold text-gray-900">— {t.name}, {t.age} anos</p>
-              </div>
-            ))}
-          </div>
-        </div>
 
         {/* 30 Day Guarantee */}
         <div className="bg-blue-50 border-2 border-blue-100 rounded-2xl p-6 sm:p-8 text-center space-y-4 shadow-sm relative overflow-hidden" style={{ animation: "fadeInUp 0.5s ease-out 700ms both" }}>
