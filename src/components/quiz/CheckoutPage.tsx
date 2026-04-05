@@ -205,6 +205,20 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
              Obter o meu plano agora
            </button>
         </div>
+
+        {/* New Guarantee Section */}
+        <div className="space-y-6 pt-4 text-center" style={{ animation: "fadeInUp 0.5s ease-out 575ms both" }}>
+          <div className="max-w-[400px] mx-auto overflow-hidden">
+             <img src="/46.png" alt="Selo de Segurança" className="w-full object-contain" />
+          </div>
+          <div className="space-y-3">
+            <h3 className="text-xl font-bold text-gray-900">Garantia de 30 Dias</h3>
+            <div className="space-y-4 text-sm text-gray-700 leading-relaxed max-w-md mx-auto">
+              <p>Acreditamos que o nosso plano pode funcionar para si e obterá resultados visíveis dentro de 4 semanas!</p>
+              <p>Estamos até prontos para devolver o seu dinheiro se não vir resultados visíveis e puder demonstrar que seguiu o nosso plano</p>
+            </div>
+          </div>
+        </div>
         
         {/* Testimonials */}
         <div className="space-y-5" style={{ animation: "fadeInUp 0.5s ease-out 600ms both" }}>
