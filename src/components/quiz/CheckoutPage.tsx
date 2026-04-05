@@ -157,20 +157,43 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
         {/* Benefits List */}
         <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-100" style={{ animation: "fadeInUp 0.5s ease-out 500ms both" }}>
           <h3 className="text-2xl font-bold text-gray-900 text-center mb-6">O que você vai ter acesso?</h3>
-          <ul className="space-y-4">
+          <ul className="space-y-6">
             {[
-              { t: "Acesso a um programa avançado de exercícios de Kegel,", d: "com rotinas diárias estruturadas passo a passo." },
-              { t: "Treinos específicos para fortalecer abdômen e pernas,", d: "regiões que aumentam seu desejo e melhoram diretamente seu desempenho." },
-              { t: "Técnicas de controle comprovadas,", d: "que reduzem tensão física e mental e aumentam seu foco." },
-              { t: "Um programa de bem-estar integrado,", d: "criado para melhorar sua autoconfiança e te devolver o domínio da situação." }
+              { 
+                t: "Acesso a um programa avançado de exercícios de Kegel, com 3 sessões diárias estruturadas.", 
+                d: "Recomendamos que você faça pelo menos 2 sessões por dia para acelerar os resultados." 
+              },
+              { 
+                t: "Treinos específicos para fortalecer abdômen e pernas, regiões que aumentam seu desejo e melhoram diretamente seu desempenho sexual.", 
+                d: "Você receberá exercícios intensos e direcionados para essas áreas." 
+              },
+              { 
+                t: "Técnicas de respiração comprovadas, que reduzem tensão física e mental e aumentam seu controle e foco na hora H.", 
+                d: "Essas técnicas foram adicionadas ao seu plano de forma simples e prática." 
+              },
+              { 
+                t: "Um programa de bem-estar emocional, criado para melhorar sua autoconfiança e ajudar você a se sentir mais seguro e no controle.", 
+                d: "" 
+              },
+              { 
+                t: "Orientações personalizadas de especialistas em sexualidade, para melhorar seu desempenho, entender melhor sua parceira e trazer mais conexão e intensidade para sua vida sexual.", 
+                d: "" 
+              }
             ].map((ben, i) => (
-              <li key={i} className="flex gap-3 items-start">
+              <li key={i} className="flex gap-3 items-start border-b border-gray-50 pb-4 last:border-0 last:pb-0">
                 <div className="mt-1 bg-green-100 p-1 rounded-full shrink-0">
                   <CheckIcon className="w-4 h-4 text-green-600" strokeWidth={3} />
                 </div>
-                <p className="text-sm text-gray-700 leading-relaxed">
-                  <strong className="text-gray-900">{ben.t}</strong> {ben.d}
-                </p>
+                <div className="space-y-1">
+                  <p className="text-sm font-bold text-gray-900 leading-snug">
+                    {ben.t}
+                  </p>
+                  {ben.d && (
+                    <p className="text-xs text-gray-600 leading-relaxed italic">
+                      {ben.d}
+                    </p>
+                  )}
+                </div>
               </li>
             ))}
           </ul>
