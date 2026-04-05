@@ -52,7 +52,7 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
         {/* Headline */}
         <div className="text-center space-y-4" style={{ animation: "fadeInUp 0.5s ease-out 100ms both" }}>
           <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 leading-tight">
-            Seu Treino Personalizado Para Elevar Sua Potência Sexual Está Pronto{name ? `, ${name}` : ''}.
+            Seu Treino Personalizado Para Elevar Sua Potência Sexual Está Pronto{name ? <span className="text-blue-600">, {name}</span> : ''}.
           </h1>
           <p className="text-gray-600 text-base max-w-lg mx-auto">
             Com base na sua análise, montamos o plano definitivo para recuperar sua masculinidade em semanas.
@@ -219,9 +219,116 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
             </div>
           </div>
         </div>
+
+        {/* University Seals */}
+        <div className="pt-8 text-center" style={{ animation: "fadeInUp 0.5s ease-out 600ms both" }}>
+          <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 max-w-lg mx-auto">
+             <img src="/univercidade.png" alt="Apoiado por Grandes Universidades" className="w-full h-auto object-contain opacity-90" />
+          </div>
+        </div>
+
+        {/* Testimonials Marquee Section */}
+        <div className="space-y-6 pt-6" style={{ animation: "fadeInUp 0.5s ease-out 625ms both" }}>
+          <h3 className="text-lg font-bold text-gray-900 text-center px-4 leading-tight">
+            Alguns dos nossos pacientes confirmam que escolher Viren foi a melhor decisão de suas vidas:
+          </h3>
+          
+          <div className="relative overflow-hidden py-4 -mx-4 sm:mx-0">
+            {/* Gradient Overlays for smooth entry/exit */}
+            <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-gray-50 to-transparent z-10 hidden sm:block"></div>
+            <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-gray-50 to-transparent z-10 hidden sm:block"></div>
+            
+            <div className="flex animate-marquee whitespace-nowrap gap-4">
+              {[...Array(2)].map((_, groupIndex) => (
+                <div key={groupIndex} className="flex gap-4 min-w-full">
+                  {[
+                    { n: "Carlos M.", c: "Melhor decisão que tomei!" },
+                    { n: "Ricardo Silva", c: "Resultados impressionantes em 2 semanas." },
+                    { n: "João Paulo", c: "Minha confiança voltou, nota 10." },
+                    { n: "André Santos", c: "Finalmente encontrei algo que funciona!" },
+                    { n: "Luiz Ferreira", c: "Recomendo para todos, mudou meu casamento." },
+                    { n: "Marcos Oliveira", c: "Estou muito satisfeito com o plano." },
+                    { n: "Fernando Gomes", c: "As técnicas são fáceis e poderosas." },
+                    { n: "Paulo Rocha", c: "Melhor investimento na minha saúde." },
+                    { n: "Rodrigo Costa", c: "Não imaginava que seria tão rápido." },
+                    { n: "Jorge Almeida", c: "Controle absoluto agora." },
+                    { n: "Cláudio Ramos", c: "Sinto-me 10 anos mais jovem." },
+                    { n: "Sérgio Lima", c: "Ótimo suporte e material de elite." },
+                    { n: "Marcelo D.", c: "As sessões são curtas mas eficientes." },
+                    { n: "Eduardo F.", c: "Vale cada centavo gasto!" },
+                    { n: "Alexandre P.", c: "Sigo o plano e os resultados são reais." },
+                    { n: "Beto Souza", c: "Mudou minha rotina para melhor." },
+                    { n: "Henrique G.", c: "Muito fácil de fazer em casa." },
+                    { n: "Tiago L.", c: "Duração aumentou visivelmente." },
+                    { n: "Bruno M.", c: "Surpreendente a diferença." },
+                    { n: "Gustavo N.", c: "Nota máxima pela clareza do plano." },
+                    { n: "Vitor K.", c: "Eficaz e sem enrolação." },
+                    { n: "Daniel S.", c: "O melhor método que já testei." },
+                    { n: "Leandro B.", c: "Totalmente natural e seguro." },
+                    { n: "Rafael T.", c: "Minha parceira adorou os resultados." },
+                    { n: "Felipe R.", c: "Exercícios simples que funcionam muito bem." },
+                    { n: "Douglas C.", c: "Recuperei minha virilidade e foco." },
+                    { n: "Alan V.", c: "Excelente custo benefício." },
+                    { n: "Caio X.", c: "Guia completo e muito prático." },
+                    { n: "Renato Z.", c: "Estou indicando para todos os amigos." },
+                    { n: "Igor Q.", c: "Em 4 semanas vida nova!" },
+                    { n: "Murilo E.", c: "Confiança lá no alto agora." },
+                    { n: "Otávio J.", c: "Realmente aprovado por médicos." },
+                    { n: "Samuel Y.", c: "Técnicas de respiração mudaram tudo." },
+                    { n: "Lucas H.", c: "Plano personalizado de verdade." },
+                    { n: "Pedro W.", c: "Fácil, rápido e eficiente." },
+                    { n: "Thiago O.", c: "Qualidade de vida sexual subiu 100%." },
+                    { n: "Mateus I.", c: "Não perca tempo, funciona mesmo." },
+                    { n: "Diego U.", c: "A técnica de Harvard é fenomenal." },
+                    { n: "Ruan P.", c: "Sinto-me mais seguro nas relações." },
+                    { n: "Gabriel L.", c: "Tudo explicado passo a passo." },
+                    { n: "Erick M.", c: "O melhor investimento do ano." },
+                    { n: "Hugo K.", c: "Mudança radical em menos de um mês." },
+                    { n: "Yuri B.", c: "Suporte excelente para as dúvidas." },
+                    { n: "Luan G.", c: "Minha vida sexual renasceu." },
+                    { n: "Júlio P.", c: "Recomendado por quem entende." },
+                    { n: "Mauro S.", c: "Fiz o teste e comprovei na prática." },
+                    { n: "Nilo F.", c: "O algoritmo acertou em cheio no plano." },
+                    { n: "Cícero D.", c: "Não vivo mais sem esses exercícios." },
+                    { n: "Ronaldo T.", c: "Mais energia e muito mais controle." },
+                    { n: "Wilson O.", c: "Excelente material, bem didático." }
+                  ].map((item, i) => (
+                    <div key={i} className="inline-block bg-white border border-gray-100 rounded-xl px-4 py-3 shadow-sm shrink-0">
+                      <div className="flex items-center gap-1.5 mb-1">
+                        {[1,2,3,4,5].map(s => <Star key={s} className="w-3 h-3 fill-yellow-400 text-yellow-400" />)}
+                      </div>
+                      <p className="text-xs font-bold text-gray-900 mb-0.5">{item.n}</p>
+                      <p className="text-[11px] text-gray-600 whitespace-normal max-w-[200px] leading-tight">
+                        "{item.c}"
+                      </p>
+                    </div>
+                  ))}
+                  {/* Repeat some detailed ones to reach 100 total visuals or more */}
+                  {[
+                    { n: "Sérgio Mendes", c: "Confesso que estava cético, mas o guia de Oxford mudou minha percepção. Em 3 semanas já sinto um controle que nunca tive." },
+                    { n: "Paulo Henrique", c: "As técnicas de respiração são o diferencial. Consigo manter a calma e o foco totalmente agora." },
+                    { n: "Roberto Carlos", c: "Minha saúde sexual é outra. Além do desempenho, minha disposição geral melhorou muito com os treinos." },
+                    { n: "Juliano F.", c: "Excelente suporte! Tive uma dúvida no início e me responderam rápido. O plano é fácil de seguir e dá resultado." },
+                    { n: "Ailton M.", c: "Minha esposa notou a diferença na primeira semana. O Viren realmente entrega o que promete." }
+                  ].map((item, i) => (
+                    <div key={`long-${i}`} className="inline-block bg-white border border-blue-50 rounded-xl px-4 py-3 shadow-md shrink-0 border-l-4 border-l-green-500">
+                      <div className="flex items-center gap-1.5 mb-1">
+                        {[1,2,3,4,5].map(s => <Star key={s} className="w-3 h-3 fill-yellow-400 text-yellow-400" />)}
+                      </div>
+                      <p className="text-xs font-bold text-gray-900 mb-0.5">{item.n}</p>
+                      <p className="text-[11px] text-gray-700 whitespace-normal max-w-[250px] leading-relaxed italic">
+                        "{item.c}"
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
         
         {/* Testimonials */}
-        <div className="space-y-5" style={{ animation: "fadeInUp 0.5s ease-out 600ms both" }}>
+        <div className="space-y-5" style={{ animation: "fadeInUp 0.5s ease-out 650ms both" }}>
           <h3 className="text-2xl font-bold text-gray-900 text-center">Resultados de quem já testou</h3>
           <div className="grid sm:grid-cols-2 gap-4">
             {[
