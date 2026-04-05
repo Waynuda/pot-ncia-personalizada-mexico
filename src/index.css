@@ -109,7 +109,7 @@
 }
 
 .animate-marquee-stop-go {
-  animation: marquee 25s linear infinite;
+  animation: marquee 12s linear infinite;
 }
 
 .animate-pulse-slow {

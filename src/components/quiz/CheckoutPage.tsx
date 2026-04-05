@@ -230,7 +230,7 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
         {/* Testimonials Marquee Section */}
         <div className="space-y-6 pt-6" style={{ animation: "fadeInUp 0.5s ease-out 625ms both" }}>
           <h3 className="text-lg font-bold text-gray-900 text-center px-4 leading-tight">
-            Alguns dos nossos pacientes confirmam que escolher Viren foi a melhor decisão de suas vidas:
+            Alguns dos nossos pacientes confirmam que escolher Nexor Men foi a melhor decisão de suas vidas:
           </h3>
           
           <div className="relative overflow-hidden py-6 -mx-4 sm:mx-0 bg-white/40 border-y border-gray-100">
@@ -309,7 +309,7 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
                     { n: "Paulo Henrique", c: "As técnicas de respiração são o diferencial. Consigo manter a calma e o foco totalmente agora." },
                     { n: "Roberto Carlos", c: "Minha saúde sexual é outra. Além do desempenho, minha disposição geral melhorou muito com os treinos." },
                     { n: "Juliano F.", c: "Excelente suporte! Tive uma dúvida no início e me responderam rápido. O plano é fácil de seguir e dá resultado." },
-                    { n: "Ailton M.", c: "Minha esposa notou a diferença na primeira semana. O Viren realmente entrega o que promete." }
+                    { n: "Ailton M.", c: "Minha esposa notou a diferença na primeira semana. O Nexor Men realmente entrega o que promete." }
                   ].map((item, i) => (
                     <div key={`long-${i}`} className="inline-block bg-white border border-blue-50 rounded-xl px-4 py-3 shadow-md shrink-0 border-l-4 border-l-green-500">
                       <div className="flex items-center gap-1.5 mb-1">
