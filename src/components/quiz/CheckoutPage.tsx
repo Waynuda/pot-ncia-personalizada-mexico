@@ -101,9 +101,12 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
             </div>
 
             <div className="px-6 pb-8">
-              <button className="w-full py-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-extrabold text-xl uppercase transition-all shadow-[0_8px_20px_-6px_rgba(22,163,74,0.5)] hover:shadow-[0_12px_25px_-6px_rgba(22,163,74,0.6)] hover:-translate-y-1 active:translate-y-0 active:shadow-none animate-pulse-slow">
-                Comprar Agora
-              </button>
+              <a 
+                href="https://pay.kambafy.com/checkout/f2d471d2-d09c-4278-b8ae-d7cedbfc4478"
+                className="block w-full py-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-extrabold text-xl uppercase transition-all shadow-[0_8px_20px_-6px_rgba(22,163,74,0.5)] hover:shadow-[0_12px_25px_-6px_rgba(22,163,74,0.6)] hover:-translate-y-1 active:translate-y-0 active:shadow-none animate-pulse-slow text-center"
+              >
+                OBTER AGORA
+              </a>
               
               {/* Security Badges under button */}
               <div className="flex items-center justify-center gap-4 mt-5">
@@ -200,9 +203,12 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
 
         {/* Secondary CTA Button */}
         <div className="pt-4" style={{ animation: "fadeInUp 0.5s ease-out 550ms both" }}>
-           <button className="w-full py-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-extrabold text-xl uppercase transition-all shadow-[0_8px_20px_-6px_rgba(22,163,74,0.5)] hover:shadow-[0_12px_25px_-6px_rgba(22,163,74,0.6)] hover:-translate-y-1 active:translate-y-0 active:shadow-none">
-             Obter o meu plano agora
-           </button>
+           <a 
+             href="https://pay.kambafy.com/checkout/f2d471d2-d09c-4278-b8ae-d7cedbfc4478"
+             className="block w-full py-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-extrabold text-xl uppercase transition-all shadow-[0_8px_20px_-6px_rgba(22,163,74,0.5)] hover:shadow-[0_12px_25px_-6px_rgba(22,163,74,0.6)] hover:-translate-y-1 active:translate-y-0 active:shadow-none text-center"
+           >
+             OBTER AGORA
+           </a>
         </div>
 
         {/* New Guarantee Section */}
@@ -318,9 +324,12 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
           </div>
           {/* Final CTA Button for Bonus */}
           <div className="pt-2">
-             <button className="w-full py-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-extrabold text-xl uppercase transition-all shadow-[0_8px_20px_-6px_rgba(22,163,74,0.5)] hover:shadow-[0_12px_25px_-6px_rgba(22,163,74,0.6)] hover:-translate-y-1 active:translate-y-0 active:shadow-none animate-pulse-slow">
-               Finalizar Meu Acesso Agora
-             </button>
+             <a 
+               href="https://pay.kambafy.com/checkout/f2d471d2-d09c-4278-b8ae-d7cedbfc4478"
+               className="block w-full py-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-extrabold text-xl uppercase transition-all shadow-[0_8px_20px_-6px_rgba(22,163,74,0.5)] hover:shadow-[0_12px_25px_-6px_rgba(22,163,74,0.6)] hover:-translate-y-1 active:translate-y-0 active:shadow-none animate-pulse-slow text-center"
+             >
+               OBTER AGORA
+             </a>
           </div>
         </div>
 
@@ -357,9 +366,12 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
 
         {/* Bottom CTA Block */}
         <div className="pb-10 pt-4" style={{ animation: "fadeInUp 0.5s ease-out 900ms both" }}>
-           <button className="w-full py-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-extrabold text-xl uppercase transition-all shadow-[0_8px_20px_-6px_rgba(22,163,74,0.5)] hover:shadow-[0_12px_25px_-6px_rgba(22,163,74,0.6)] hover:-translate-y-1 active:translate-y-0 active:shadow-none">
-             Quero Fazer Minha Inscrição
-           </button>
+           <a 
+             href="https://pay.kambafy.com/checkout/f2d471d2-d09c-4278-b8ae-d7cedbfc4478"
+             className="block w-full py-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-extrabold text-xl uppercase transition-all shadow-[0_8px_20px_-6px_rgba(22,163,74,0.5)] hover:shadow-[0_12px_25px_-6px_rgba(22,163,74,0.6)] hover:-translate-y-1 active:translate-y-0 active:shadow-none text-center"
+           >
+             OBTER AGORA
+           </a>
            <p className="text-center text-xs text-gray-500 mt-4">
              Acesso imediato ao material pelo e-mail
            </p>
