@@ -313,7 +313,7 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
               </p>
               <p className="text-orange-700 font-extrabold items-center justify-center gap-2 flex flex-col pt-4">
                 <span className="animate-bounce text-3xl">↓</span>
-                Clica no botão abaixo e finaliza o teu acesso
+                Clica no botão abaixo e finaliza o teu acesso por apenas €12,07
               </p>
             </div>
           </div>
