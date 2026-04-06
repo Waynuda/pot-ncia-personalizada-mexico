@@ -31,9 +31,9 @@ const ProgressBar = ({ label, before, after, colorClass }: { label: string, befo
 
 const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
   return (
-    <div className="min-h-screen bg-gray-50 pb-16 font-sans">
+    <div className="min-h-screen bg-white pb-16 font-sans">
       {/* Header Banner */}
-      <div className="bg-white py-4 shadow-sm flex justify-center items-center relative z-10 border-b border-gray-100">
+      <div className="bg-white py-4 flex justify-center items-center relative z-10 border-b border-gray-100">
         <div className="flex items-center gap-2">
           <img src="/logo.png" alt="Nexor MEN" className="h-8" />
           <span className="text-xl font-black text-gray-900 tracking-tight"><span className="text-primary">NEXOR</span> MEN</span>
@@ -60,12 +60,12 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
         </div>
 
         {/* Imagem Antes e Depois */}
-        <div className="bg-white rounded-2xl p-2 shadow-sm border border-gray-100 overflow-hidden" style={{ animation: "fadeInUp 0.5s ease-out 200ms both" }}>
+        <div className="rounded-2xl p-2 overflow-hidden" style={{ animation: "fadeInUp 0.5s ease-out 200ms both" }}>
            <img src="/antes-depois.jpg" alt="Transformação Esperada" className="w-full object-cover rounded-xl" />
         </div>
 
         {/* Progress Charts */}
-        <div className="bg-white border border-gray-100 shadow-sm rounded-2xl p-6 sm:p-8 space-y-2" style={{ animation: "fadeInUp 0.5s ease-out 300ms both" }}>
+        <div className="rounded-2xl p-6 sm:p-8 space-y-2 border border-gray-100" style={{ animation: "fadeInUp 0.5s ease-out 300ms both" }}>
           <h3 className="text-xl font-bold text-gray-900 text-center mb-6">Projeção da sua evolução:</h3>
           <ProgressBar label="Desempenho Sexual" before={20} after={90} colorClass="bg-blue-600" />
           <ProgressBar label="Autoconfiança" before={15} after={94} colorClass="bg-green-500" />
@@ -78,7 +78,7 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
             Adquira agora o seu plano e tenha sua masculinidade de volta em semanas
           </h2>
 
-          <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200">
+          <div className="rounded-2xl overflow-hidden border border-gray-200">
             <div className="bg-green-600 py-3">
               <h3 className="text-white font-bold text-lg">Treino Personalizado Para Elevar Sua Potência</h3>
             </div>
@@ -123,7 +123,7 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
 
         {/* Algorithm and Benefits Text */}
         <div className="space-y-6 py-6" style={{ animation: "fadeInUp 0.5s ease-out 450ms both" }}>
-          <div className="bg-white rounded-2xl p-2 shadow-sm border border-gray-100 overflow-hidden max-h-[600px] flex items-end">
+          <div className="rounded-2xl p-2 overflow-hidden max-h-[600px] flex items-end">
              <img src="/etapa_3_opt.jpg" alt="Plano de Ação" className="w-full object-cover rounded-xl object-bottom" />
           </div>
           
@@ -156,7 +156,7 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
         </div>
 
         {/* Benefits List */}
-        <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-100" style={{ animation: "fadeInUp 0.5s ease-out 500ms both" }}>
+        <div className="rounded-2xl p-6 sm:p-8 border border-gray-100" style={{ animation: "fadeInUp 0.5s ease-out 500ms both" }}>
           <h3 className="text-2xl font-bold text-gray-900 text-center mb-6">O que você vai ter acesso?</h3>
           <ul className="space-y-6">
             {[
@@ -226,8 +226,8 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
 
         {/* Authority Logo with background */}
         <div className="pt-8 text-center" style={{ animation: "fadeInUp 0.5s ease-out 600ms both" }}>
-          <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 max-w-sm mx-auto overflow-hidden">
-             <img src="/logo-fundo.jpg" alt="Viren - Autoridade" className="w-full h-auto object-contain rounded-lg" />
+          <div className="rounded-2xl p-4 max-w-sm mx-auto overflow-hidden">
+             <img src="/logo-fundo.jpg" alt="Nexor MEN - Autoridade" className="w-full h-auto object-contain rounded-lg" />
           </div>
         </div>
 
@@ -237,10 +237,10 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
             Alguns dos nossos pacientes confirmam que escolher Nexor Men foi a melhor decisão de suas vidas:
           </h3>
           
-          <div className="relative overflow-hidden py-6 -mx-4 sm:mx-0 bg-white/40 border-y border-gray-100">
+          <div className="relative overflow-hidden py-6 -mx-4 sm:mx-0 border-y border-gray-100">
             {/* Gradient Overlays for smooth entry/exit */}
-            <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-gray-50 to-transparent z-10 hidden sm:block"></div>
-            <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-gray-50 to-transparent z-10 hidden sm:block"></div>
+            <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-white to-transparent z-10 hidden sm:block"></div>
+            <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-white to-transparent z-10 hidden sm:block"></div>
             
             <div className="flex animate-marquee-stop-go whitespace-nowrap gap-6">
               {[...Array(2)].map((_, groupIndex) => (
@@ -261,7 +261,7 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
                     { n: "Marcelo D.", c: "As sessões são curtas mas eficientes." },
                     { n: "Eduardo F.", c: "Vale cada centavo gasto!" }
                   ].map((item, i) => (
-                    <div key={i} className="inline-block bg-white border border-gray-100 rounded-xl px-4 py-3 shadow-sm shrink-0">
+                    <div key={i} className="inline-block bg-white border border-gray-100 rounded-xl px-4 py-3 shrink-0">
                       <div className="flex items-center gap-1.5 mb-1">
                         {[1,2,3,4,5].map(s => <Star key={s} className="w-3 h-3 fill-yellow-400 text-yellow-400" />)}
                       </div>
@@ -295,9 +295,7 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
           </div>
 
           {/* Surprise Gift Box */}
-          <div className="bg-orange-50 border-2 border-dashed border-orange-200 rounded-3xl p-6 sm:p-10 text-center relative overflow-hidden shadow-sm">
-            <div className="absolute -top-6 -right-6 w-24 h-24 bg-orange-100 rounded-full opacity-50"></div>
-            
+          <div className="bg-orange-50 border-2 border-dashed border-orange-200 rounded-3xl p-6 sm:p-10 text-center relative overflow-hidden">
             <h4 className="text-2xl font-black text-orange-600 mb-4 uppercase tracking-wider">
               🎁 Presente Surpresa:
             </h4>
@@ -333,9 +331,7 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
         </div>
 
         {/* 30 Day Guarantee */}
-        <div className="bg-blue-50 border-2 border-blue-100 rounded-2xl p-6 sm:p-8 text-center space-y-4 shadow-sm relative overflow-hidden" style={{ animation: "fadeInUp 0.5s ease-out 700ms both" }}>
-          <div className="absolute top-0 right-0 w-32 h-32 bg-blue-100 rounded-bl-full -mr-10 -mt-10 opacity-50 pointer-events-none"></div>
-          
+        <div className="bg-blue-50 border border-blue-100 rounded-2xl p-6 sm:p-8 text-center space-y-4" style={{ animation: "fadeInUp 0.5s ease-out 700ms both" }}>
           <h3 className="text-2xl font-extrabold text-blue-900">Garantia Incondicional de 30 Dias</h3>
           <p className="text-sm text-blue-800 max-w-md mx-auto leading-relaxed">
             Acreditamos tanto no nosso plano que oferecemos resultados visíveis ou seu dinheiro de volta. Você tem 30 dias para testar a rotina. Se não notar uma evolução clara na sua potência, devolvemos 100% do seu investimento. Sem perguntas.
@@ -343,7 +339,7 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
         </div>
 
         {/* FAQ Area */}
-        <div className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-100" style={{ animation: "fadeInUp 0.5s ease-out 800ms both" }}>
+        <div className="rounded-2xl p-6 sm:p-8 border border-gray-100" style={{ animation: "fadeInUp 0.5s ease-out 800ms both" }}>
           <h3 className="text-2xl font-bold text-gray-900 text-center mb-6">Perguntas Frequentes</h3>
           <Accordion type="single" collapsible className="space-y-3 w-full border-none">
             {[
