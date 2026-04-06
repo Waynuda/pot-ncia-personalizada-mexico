@@ -135,7 +135,7 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
           
           <div className="space-y-4 text-gray-700 text-sm sm:text-base leading-relaxed text-center sm:text-left">
             <p>
-              Nosso algoritmo inteligente gerou um plano totalmente personalizado com base nos seus objetivos.
+              Criámos um plano totalmente personalizado com base nos seus objetivos.
             </p>
             <p>
               Com os exercícios personalizados de Kegel você melhora as cinco áreas essenciais da saúde sexual para conseguir durar mais, ter melhores ereções e mais controle na hora do sexo.
@@ -345,7 +345,12 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
             {[
               { q: "O método é seguro? Meus dados estão protegidos?", a: "Sim, utilizamos criptografia de ponta a ponta e jamais venderemos suas informações para terceiros. O pagamento é 100% seguro." },
               { q: "Em quanto tempo verei resultados?", a: "A maior parte dos usuários relata melhorias claras de força e controle entre as primeiras semanas de prática consistente da nossa rotina de exercícios." },
-              { q: "Vou precisar comprar algum equipamento?", a: "Não. Nosso método foca no corpo e nos exercícios de contração que podem ser realizados em qualquer lugar, de graça." }
+              { q: "Vou precisar comprar algum equipamento?", a: "Não. Nosso método foca no corpo e nos exercícios de contração que podem ser realizados em qualquer lugar, de graça." },
+              { q: "Depois de 7 dias fazendo os exercícios de Kegel, já consegui durar 20 minutos a mais. Isso é normal?", a: "Dr. Mark Tyler: Sim! Os exercícios são muito poderosos e seu corpo reagiu muito bem ao programa. Para resultados grandes e permanentes, recomendamos seguir o programa de 30 a 90 dias. Se nos primeiros dias você não sentir resultados incríveis, continue! O progresso constante é normal." },
+              { q: "Eu também tinha problemas para urinar e, depois do programa Nexor MEN, isso sumiu. É comum?", a: "Dr. Mark Tyler: Sim, não se assuste! Um assoalho pélvico forte melhora a saúde geral da região, incluindo o sistema urinário. Por isso, é normal notar melhorias significativas em outras áreas também." },
+              { q: "Não quero que minha esposa saiba do tratamento. O que devo fazer?", a: "Dr. Mark Tyler: Pode ficar tranquilo! Mantemos 100% de sigilo sobre seu tratamento. Na fatura do cartão, usamos um nome discreto e os exercícios são parecidos com treinos de academia — ninguém vai desconfiar que é para outra coisa." },
+              { q: "E se não funcionar para mim?", a: "Dr. Mark Tyler: Entendemos que cada homem é único. Por isso o programa é personalizado para cada caso. Até agora, ninguém ficou insatisfeito, mas caso você não veja resultados, oferecemos 30 dias de garantia especial para pedir seu dinheiro de volta. Sem perguntas, sem complicações." },
+              { q: "Como posso começar a recuperar minha performance sexual?", a: "Dr. Mark Tyler: O primeiro passo é simples: clique no botão abaixo e siga para começar. Assim como mais de 1 milhão de homens que já passaram pelo programa, você também terá resultados significativos e ficará satisfeito com sua nova performance." }
             ].map((faq, i) => (
               <AccordionItem key={i} value={`faq-${i}`} className="border border-gray-200 rounded-xl px-5 bg-gray-50/50">
                 <AccordionTrigger className="text-sm font-bold text-gray-900 hover:no-underline py-4 text-left">
