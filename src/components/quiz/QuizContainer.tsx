@@ -354,7 +354,7 @@ const QuizContainer: React.FC = () => {
           <div className="space-y-6 text-center">
             <div className="space-y-4" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
               <p className="font-bold text-foreground text-xl leading-snug">
-                O programa de Exercícios da Viren ajuda a fortalecer os músculos do assoalho pélvico e pode aumentar o tempo médio de relação em até 7 vezes
+                O programa de Exercícios da Nexor MEN ajuda a fortalecer os músculos do assoalho pélvico e pode aumentar o tempo médio de relação em até 7 vezes
               </p>
             </div>
             <div className="relative overflow-hidden rounded-2xl drop-shadow-sm h-64 sm:h-72" style={{ animation: "fadeInUp 0.4s ease-out 150ms both" }}>
