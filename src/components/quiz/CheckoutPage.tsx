@@ -135,7 +135,7 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
           
           <div className="space-y-4 text-gray-700 text-sm sm:text-base leading-relaxed text-center sm:text-left">
             <p>
-              Criámos um plano totalmente personalizado com base nos seus objetivos.
+              Nosso algoritmo inteligente gerou um plano totalmente personalizado com base nos seus objetivos.
             </p>
             <p>
               Com os exercícios personalizados de Kegel você melhora as cinco áreas essenciais da saúde sexual para conseguir durar mais, ter melhores ereções e mais controle na hora do sexo.
