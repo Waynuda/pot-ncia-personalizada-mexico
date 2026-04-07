@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect, useRef } from "react";
 import QuizHeader from "./QuizHeader";
 import OptionCard from "./OptionCard";
 import ScaleSelector from "./ScaleSelector";
@@ -74,6 +74,24 @@ const QuizContainer: React.FC = () => {
   const [answers, setAnswers] = useState<Record<number, any>>({});
   const [animating, setAnimating] = useState(false);
   const [direction, setDirection] = useState<"enter" | "exit">("enter");
+  const firedEvents = useRef<Set<string>>(new Set());
+
+  const fireGa4 = useCallback((event: string, params?: Record<string, any>) => {
+    const key = params ? `${event}_${JSON.stringify(params)}` : event;
+    if (firedEvents.current.has(key)) return;
+    firedEvents.current.add(key);
+    if (typeof window !== "undefined" && (window as any).gtag) {
+      (window as any).gtag("event", event, params);
+    }
+  }, []);
+
+  // GA4 event tracking based on step changes
+  useEffect(() => {
+    if (step === 1) fireGa4("quiz_start");
+    if (step > 1 && step <= TOTAL_STEPS && step % 5 === 0) fireGa4("quiz_progress", { step_number: step });
+    if (step === TOTAL_STEPS) fireGa4("quiz_complete");
+    if (step > TOTAL_STEPS + 1) fireGa4("sales_page_view");
+  }, [step, fireGa4]);
 
   const goNext = useCallback((value?: any) => {
     if (animating) return;
