@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CountdownTimer from "./CountdownTimer";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Shield, Lock, CheckCircle, Star, CheckIcon, ShieldCheck } from "lucide-react";
@@ -30,6 +30,26 @@ const ProgressBar = ({ label, before, after, colorClass }: { label: string, befo
 );
 
 const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
+  useEffect(() => {
+    // Meta Pixel
+    if (!(window as any).fbq) {
+      const n = ((window as any).fbq = function (...args: any[]) {
+        n.callMethod ? n.callMethod.apply(n, args) : n.queue.push(args);
+      }) as any;
+      (window as any)._fbq = n;
+      n.push = n;
+      n.loaded = true;
+      n.version = '2.0';
+      n.queue = [] as any[];
+      const t = document.createElement('script');
+      t.async = true;
+      t.src = 'https://connect.facebook.net/en_US/fbevents.js';
+      document.head.appendChild(t);
+    }
+    (window as any).fbq('init', '1505287261210886');
+    (window as any).fbq('track', 'PageView');
+  }, []);
+
   return (
     <div className="min-h-screen bg-white pb-16 font-sans">
       {/* Header Banner */}
