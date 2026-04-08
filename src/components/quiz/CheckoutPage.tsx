@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CountdownTimer from "./CountdownTimer";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Shield, Lock, CheckCircle, Star, CheckIcon, ShieldCheck } from "lucide-react";
