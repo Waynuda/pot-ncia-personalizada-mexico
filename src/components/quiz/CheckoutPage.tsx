@@ -113,9 +113,10 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
                  <div className="text-sm text-gray-500 line-through">De €24</div>
                  <div className="text-xs text-gray-500 mb-1">Por apenas</div>
                  <div className="flex items-baseline justify-end gap-0.5">
-                   <span className="text-3xl font-bold text-green-700">€</span>
-                   <span className="text-5xl font-black text-green-600 tracking-tighter">12,07</span>
-                 </div>
+                    <span className="text-3xl font-bold text-green-700">€</span>
+                    <span className="text-5xl font-black text-green-600 tracking-tighter">6,46</span>
+                  </div>
+                 <p className="text-xs text-green-700 font-semibold mt-1">💳 Pagamento único · Acesso vitalício</p>
               </div>
             </div>
 
@@ -124,7 +125,7 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
                 href="https://pay.kambafy.com/checkout/f2d471d2-d09c-4278-b8ae-d7cedbfc4478"
                 className="block w-full py-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-extrabold text-xl uppercase transition-all shadow-[0_8px_20px_-6px_rgba(22,163,74,0.5)] hover:shadow-[0_12px_25px_-6px_rgba(22,163,74,0.6)] hover:-translate-y-1 active:translate-y-0 active:shadow-none animate-pulse-slow text-center"
               >
-                OBTER AGORA
+                OBTER AGORA POR €6,46
               </a>
               
               {/* Security Badges under button */}
@@ -226,8 +227,8 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
              href="https://pay.kambafy.com/checkout/f2d471d2-d09c-4278-b8ae-d7cedbfc4478"
              className="block w-full py-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-extrabold text-xl uppercase transition-all shadow-[0_8px_20px_-6px_rgba(22,163,74,0.5)] hover:shadow-[0_12px_25px_-6px_rgba(22,163,74,0.6)] hover:-translate-y-1 active:translate-y-0 active:shadow-none text-center"
            >
-             OBTER AGORA
-           </a>
+              OBTER AGORA POR €6,46
+            </a>
         </div>
 
         {/* New Guarantee Section */}
@@ -335,7 +336,7 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
               </p>
               <p className="text-orange-700 font-extrabold items-center justify-center gap-2 flex flex-col pt-4">
                 <span className="animate-bounce text-3xl">↓</span>
-                Clica no botão abaixo e finaliza o teu acesso por apenas €12,07
+                Clica no botão abaixo e finaliza o teu acesso por apenas €6,46
               </p>
             </div>
           </div>
@@ -345,8 +346,8 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
                href="https://pay.kambafy.com/checkout/f2d471d2-d09c-4278-b8ae-d7cedbfc4478"
                className="block w-full py-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-extrabold text-xl uppercase transition-all shadow-[0_8px_20px_-6px_rgba(22,163,74,0.5)] hover:shadow-[0_12px_25px_-6px_rgba(22,163,74,0.6)] hover:-translate-y-1 active:translate-y-0 active:shadow-none animate-pulse-slow text-center"
              >
-               OBTER AGORA
-             </a>
+                OBTER AGORA POR €6,46
+              </a>
           </div>
         </div>
 
@@ -370,7 +371,8 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
               { q: "Eu também tinha problemas para urinar e, depois do programa Nexor MEN, isso sumiu. É comum?", a: "Dr. Mark Tyler: Sim, não se assuste! Um assoalho pélvico forte melhora a saúde geral da região, incluindo o sistema urinário. Por isso, é normal notar melhorias significativas em outras áreas também." },
               { q: "Não quero que minha esposa saiba do tratamento. O que devo fazer?", a: "Dr. Mark Tyler: Pode ficar tranquilo! Mantemos 100% de sigilo sobre seu tratamento. Na fatura do cartão, usamos um nome discreto e os exercícios são parecidos com treinos de academia — ninguém vai desconfiar que é para outra coisa." },
               { q: "E se não funcionar para mim?", a: "Dr. Mark Tyler: Entendemos que cada homem é único. Por isso o programa é personalizado para cada caso. Até agora, ninguém ficou insatisfeito, mas caso você não veja resultados, oferecemos 30 dias de garantia especial para pedir seu dinheiro de volta. Sem perguntas, sem complicações." },
-              { q: "Como posso começar a recuperar minha performance sexual?", a: "Dr. Mark Tyler: O primeiro passo é simples: clique no botão abaixo e siga para começar. Assim como mais de 1 milhão de homens que já passaram pelo programa, você também terá resultados significativos e ficará satisfeito com sua nova performance." }
+              { q: "Como posso começar a recuperar minha performance sexual?", a: "Dr. Mark Tyler: O primeiro passo é simples: clique no botão abaixo e siga para começar. Assim como mais de 1 milhão de homens que já passaram pelo programa, você também terá resultados significativos e ficará satisfeito com sua nova performance." },
+              { q: "Onde vou receber o acesso ao programa?", a: "Você vai receber o acesso completo diretamente no seu e-mail após confirmar o pagamento. Basta verificar sua caixa de entrada (e a pasta de spam, por precaução) e seguir as instruções para começar imediatamente." }
             ].map((faq, i) => (
               <AccordionItem key={i} value={`faq-${i}`} className="border border-gray-200 rounded-xl px-5 bg-gray-50/50">
                 <AccordionTrigger className="text-sm font-bold text-gray-900 hover:no-underline py-4 text-left">
@@ -390,8 +392,8 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
              href="https://pay.kambafy.com/checkout/f2d471d2-d09c-4278-b8ae-d7cedbfc4478"
              className="block w-full py-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-extrabold text-xl uppercase transition-all shadow-[0_8px_20px_-6px_rgba(22,163,74,0.5)] hover:shadow-[0_12px_25px_-6px_rgba(22,163,74,0.6)] hover:-translate-y-1 active:translate-y-0 active:shadow-none text-center"
            >
-             OBTER AGORA
-           </a>
+              OBTER AGORA POR €6,46
+            </a>
            <p className="text-center text-xs text-gray-500 mt-4">
              Acesso imediato ao material pelo e-mail
            </p>
