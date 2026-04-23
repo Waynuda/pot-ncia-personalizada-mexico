@@ -48,19 +48,6 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
     }
     (window as any).fbq('init', '1505287261210886');
     (window as any).fbq('track', 'PageView');
-
-    // Hotmart
-    const importHotmart = () => { 
-      const imported = document.createElement('script'); 
-      imported.src = 'https://static.hotmart.com/checkout/widget.min.js'; 
-      document.head.appendChild(imported); 
-      const link = document.createElement('link'); 
-      link.rel = 'stylesheet'; 
-      link.type = 'text/css'; 
-      link.href = 'https://static.hotmart.com/css/hotmart-fb.min.css'; 
-      document.head.appendChild(link);
-    }; 
-    importHotmart(); 
   }, []);
 
   return (
@@ -135,11 +122,10 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
 
             <div className="px-6 pb-8">
               <a 
-                href="https://pay.hotmart.com/S105516336W?checkoutMode=2"
-                onClick={(e) => e.preventDefault()}
-                className="hotmart-fb hotmart__button-checkout flex justify-center w-full"
+                href="https://pay.hotmart.com/S105516336W?checkoutMode=10"
+                className="block w-full py-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-extrabold text-xl uppercase transition-all shadow-[0_8px_20px_-6px_rgba(22,163,74,0.5)] hover:shadow-[0_12px_25px_-6px_rgba(22,163,74,0.6)] hover:-translate-y-1 active:translate-y-0 active:shadow-none animate-pulse-slow text-center"
               >
-                <img src='https://static.hotmart.com/img/btn-buy-green.png' alt='Comprar' className="w-auto h-auto max-w-full" />
+                OBTER AGORA POR €6,46
               </a>
               
               {/* Security Badges under button */}
@@ -238,11 +224,10 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
         {/* Secondary CTA Button */}
         <div className="pt-4" style={{ animation: "fadeInUp 0.5s ease-out 550ms both" }}>
            <a 
-             href="https://pay.hotmart.com/S105516336W?checkoutMode=2"
-             onClick={(e) => e.preventDefault()}
-             className="hotmart-fb hotmart__button-checkout flex justify-center w-full"
+             href="https://pay.hotmart.com/S105516336W?checkoutMode=10"
+             className="block w-full py-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-extrabold text-xl uppercase transition-all shadow-[0_8px_20px_-6px_rgba(22,163,74,0.5)] hover:shadow-[0_12px_25px_-6px_rgba(22,163,74,0.6)] hover:-translate-y-1 active:translate-y-0 active:shadow-none text-center"
            >
-              <img src='https://static.hotmart.com/img/btn-buy-green.png' alt='Comprar' className="w-auto h-auto max-w-full" />
+              OBTER AGORA POR €6,46
             </a>
         </div>
 
@@ -358,11 +343,10 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
           {/* Final CTA Button for Bonus */}
           <div className="pt-2">
              <a 
-               href="https://pay.hotmart.com/S105516336W?checkoutMode=2"
-               onClick={(e) => e.preventDefault()}
-               className="hotmart-fb hotmart__button-checkout flex justify-center w-full"
+               href="https://pay.hotmart.com/S105516336W?checkoutMode=10"
+               className="block w-full py-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-extrabold text-xl uppercase transition-all shadow-[0_8px_20px_-6px_rgba(22,163,74,0.5)] hover:shadow-[0_12px_25px_-6px_rgba(22,163,74,0.6)] hover:-translate-y-1 active:translate-y-0 active:shadow-none animate-pulse-slow text-center"
              >
-                <img src='https://static.hotmart.com/img/btn-buy-green.png' alt='Comprar' className="w-auto h-auto max-w-full" />
+                OBTER AGORA POR €6,46
               </a>
           </div>
         </div>
@@ -405,11 +389,10 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
         {/* Bottom CTA Block */}
         <div className="pb-10 pt-4" style={{ animation: "fadeInUp 0.5s ease-out 900ms both" }}>
            <a 
-             href="https://pay.hotmart.com/S105516336W?checkoutMode=2"
-             onClick={(e) => e.preventDefault()}
-             className="hotmart-fb hotmart__button-checkout flex justify-center w-full"
+             href="https://pay.hotmart.com/S105516336W?checkoutMode=10"
+             className="block w-full py-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-extrabold text-xl uppercase transition-all shadow-[0_8px_20px_-6px_rgba(22,163,74,0.5)] hover:shadow-[0_12px_25px_-6px_rgba(22,163,74,0.6)] hover:-translate-y-1 active:translate-y-0 active:shadow-none text-center"
            >
-              <img src='https://static.hotmart.com/img/btn-buy-green.png' alt='Comprar' className="w-auto h-auto max-w-full" />
+              OBTER AGORA POR €6,46
             </a>
            <p className="text-center text-xs text-gray-500 mt-4">
              Acesso imediato ao material pelo e-mail
