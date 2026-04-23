@@ -48,6 +48,19 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
     }
     (window as any).fbq('init', '1505287261210886');
     (window as any).fbq('track', 'PageView');
+
+    // Hotmart
+    const importHotmart = () => { 
+      const imported = document.createElement('script'); 
+      imported.src = 'https://static.hotmart.com/checkout/widget.min.js'; 
+      document.head.appendChild(imported); 
+      const link = document.createElement('link'); 
+      link.rel = 'stylesheet'; 
+      link.type = 'text/css'; 
+      link.href = 'https://static.hotmart.com/css/hotmart-fb.min.css'; 
+      document.head.appendChild(link);
+    }; 
+    importHotmart(); 
   }, []);
 
   return (
@@ -122,8 +135,9 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
 
             <div className="px-6 pb-8">
               <a 
-                href="https://pay.kambafy.com/checkout/f2d471d2-d09c-4278-b8ae-d7cedbfc4478"
-                className="block w-full py-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-extrabold text-xl uppercase transition-all shadow-[0_8px_20px_-6px_rgba(22,163,74,0.5)] hover:shadow-[0_12px_25px_-6px_rgba(22,163,74,0.6)] hover:-translate-y-1 active:translate-y-0 active:shadow-none animate-pulse-slow text-center"
+                href="https://pay.hotmart.com/S105516336W?checkoutMode=2"
+                onClick={(e) => e.preventDefault()}
+                className="hotmart-fb hotmart__button-checkout block w-full py-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-extrabold text-xl uppercase transition-all shadow-[0_8px_20px_-6px_rgba(22,163,74,0.5)] hover:shadow-[0_12px_25px_-6px_rgba(22,163,74,0.6)] hover:-translate-y-1 active:translate-y-0 active:shadow-none animate-pulse-slow text-center"
               >
                 OBTER AGORA POR €6,46
               </a>
@@ -224,8 +238,9 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
         {/* Secondary CTA Button */}
         <div className="pt-4" style={{ animation: "fadeInUp 0.5s ease-out 550ms both" }}>
            <a 
-             href="https://pay.kambafy.com/checkout/f2d471d2-d09c-4278-b8ae-d7cedbfc4478"
-             className="block w-full py-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-extrabold text-xl uppercase transition-all shadow-[0_8px_20px_-6px_rgba(22,163,74,0.5)] hover:shadow-[0_12px_25px_-6px_rgba(22,163,74,0.6)] hover:-translate-y-1 active:translate-y-0 active:shadow-none text-center"
+             href="https://pay.hotmart.com/S105516336W?checkoutMode=2"
+             onClick={(e) => e.preventDefault()}
+             className="hotmart-fb hotmart__button-checkout block w-full py-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-extrabold text-xl uppercase transition-all shadow-[0_8px_20px_-6px_rgba(22,163,74,0.5)] hover:shadow-[0_12px_25px_-6px_rgba(22,163,74,0.6)] hover:-translate-y-1 active:translate-y-0 active:shadow-none text-center"
            >
               OBTER AGORA POR €6,46
             </a>
@@ -343,8 +358,9 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
           {/* Final CTA Button for Bonus */}
           <div className="pt-2">
              <a 
-               href="https://pay.kambafy.com/checkout/f2d471d2-d09c-4278-b8ae-d7cedbfc4478"
-               className="block w-full py-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-extrabold text-xl uppercase transition-all shadow-[0_8px_20px_-6px_rgba(22,163,74,0.5)] hover:shadow-[0_12px_25px_-6px_rgba(22,163,74,0.6)] hover:-translate-y-1 active:translate-y-0 active:shadow-none animate-pulse-slow text-center"
+               href="https://pay.hotmart.com/S105516336W?checkoutMode=2"
+               onClick={(e) => e.preventDefault()}
+               className="hotmart-fb hotmart__button-checkout block w-full py-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-extrabold text-xl uppercase transition-all shadow-[0_8px_20px_-6px_rgba(22,163,74,0.5)] hover:shadow-[0_12px_25px_-6px_rgba(22,163,74,0.6)] hover:-translate-y-1 active:translate-y-0 active:shadow-none animate-pulse-slow text-center"
              >
                 OBTER AGORA POR €6,46
               </a>
@@ -389,8 +405,9 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
         {/* Bottom CTA Block */}
         <div className="pb-10 pt-4" style={{ animation: "fadeInUp 0.5s ease-out 900ms both" }}>
            <a 
-             href="https://pay.kambafy.com/checkout/f2d471d2-d09c-4278-b8ae-d7cedbfc4478"
-             className="block w-full py-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-extrabold text-xl uppercase transition-all shadow-[0_8px_20px_-6px_rgba(22,163,74,0.5)] hover:shadow-[0_12px_25px_-6px_rgba(22,163,74,0.6)] hover:-translate-y-1 active:translate-y-0 active:shadow-none text-center"
+             href="https://pay.hotmart.com/S105516336W?checkoutMode=2"
+             onClick={(e) => e.preventDefault()}
+             className="hotmart-fb hotmart__button-checkout block w-full py-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-extrabold text-xl uppercase transition-all shadow-[0_8px_20px_-6px_rgba(22,163,74,0.5)] hover:shadow-[0_12px_25px_-6px_rgba(22,163,74,0.6)] hover:-translate-y-1 active:translate-y-0 active:shadow-none text-center"
            >
               OBTER AGORA POR €6,46
             </a>
