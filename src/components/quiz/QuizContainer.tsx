@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useEffect, useRef } from "react";
+import { Navigate } from "react-router-dom";
 import QuizHeader from "./QuizHeader";
 import OptionCard from "./OptionCard";
 import ScaleSelector from "./ScaleSelector";
@@ -133,7 +134,7 @@ const QuizContainer: React.FC = () => {
   }
 
   if (step > TOTAL_STEPS + 1) {
-    return <CheckoutPage name={answers[31] || "Campeão"} />;
+    return <Navigate to="/oferta" state={{ name: answers[31] || "Campeão" }} replace />;
   }
 
   const ageOptions = [
