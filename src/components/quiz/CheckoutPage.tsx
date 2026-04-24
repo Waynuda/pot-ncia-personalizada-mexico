@@ -123,7 +123,7 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
             <div className="px-6 pb-8">
               <a 
                 href="https://pay.hotmart.com/S105516336W?checkoutMode=10"
-                className="block w-full py-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-extrabold text-xl uppercase transition-all shadow-[0_8px_20px_-6px_rgba(22,163,74,0.5)] hover:shadow-[0_12px_25px_-6px_rgba(22,163,74,0.6)] hover:-translate-y-1 active:translate-y-0 active:shadow-none animate-pulse-slow text-center"
+                className="hotmart-fb block w-full py-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-extrabold text-xl uppercase transition-all shadow-[0_8px_20px_-6px_rgba(22,163,74,0.5)] hover:shadow-[0_12px_25px_-6px_rgba(22,163,74,0.6)] hover:-translate-y-1 active:translate-y-0 active:shadow-none animate-pulse-slow text-center"
               >
                 OBTER AGORA POR €6,99
               </a>
@@ -225,7 +225,7 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
         <div className="pt-4" style={{ animation: "fadeInUp 0.5s ease-out 550ms both" }}>
            <a 
              href="https://pay.hotmart.com/S105516336W?checkoutMode=10"
-             className="block w-full py-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-extrabold text-xl uppercase transition-all shadow-[0_8px_20px_-6px_rgba(22,163,74,0.5)] hover:shadow-[0_12px_25px_-6px_rgba(22,163,74,0.6)] hover:-translate-y-1 active:translate-y-0 active:shadow-none text-center"
+             className="hotmart-fb block w-full py-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-extrabold text-xl uppercase transition-all shadow-[0_8px_20px_-6px_rgba(22,163,74,0.5)] hover:shadow-[0_12px_25px_-6px_rgba(22,163,74,0.6)] hover:-translate-y-1 active:translate-y-0 active:shadow-none text-center"
            >
               OBTER AGORA POR €6,99
             </a>
@@ -344,7 +344,7 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
           <div className="pt-2">
              <a 
                href="https://pay.hotmart.com/S105516336W?checkoutMode=10"
-               className="block w-full py-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-extrabold text-xl uppercase transition-all shadow-[0_8px_20px_-6px_rgba(22,163,74,0.5)] hover:shadow-[0_12px_25px_-6px_rgba(22,163,74,0.6)] hover:-translate-y-1 active:translate-y-0 active:shadow-none animate-pulse-slow text-center"
+               className="hotmart-fb block w-full py-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-extrabold text-xl uppercase transition-all shadow-[0_8px_20px_-6px_rgba(22,163,74,0.5)] hover:shadow-[0_12px_25px_-6px_rgba(22,163,74,0.6)] hover:-translate-y-1 active:translate-y-0 active:shadow-none animate-pulse-slow text-center"
              >
                 OBTER AGORA POR €6,99
               </a>
@@ -390,7 +390,7 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
         <div className="pb-10 pt-4" style={{ animation: "fadeInUp 0.5s ease-out 900ms both" }}>
            <a 
              href="https://pay.hotmart.com/S105516336W?checkoutMode=10"
-             className="block w-full py-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-extrabold text-xl uppercase transition-all shadow-[0_8px_20px_-6px_rgba(22,163,74,0.5)] hover:shadow-[0_12px_25px_-6px_rgba(22,163,74,0.6)] hover:-translate-y-1 active:translate-y-0 active:shadow-none text-center"
+             className="hotmart-fb block w-full py-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-extrabold text-xl uppercase transition-all shadow-[0_8px_20px_-6px_rgba(22,163,74,0.5)] hover:shadow-[0_12px_25px_-6px_rgba(22,163,74,0.6)] hover:-translate-y-1 active:translate-y-0 active:shadow-none text-center"
            >
               OBTER AGORA POR €6,99
             </a>
