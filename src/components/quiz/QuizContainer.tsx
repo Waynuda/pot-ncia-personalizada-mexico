@@ -690,8 +690,9 @@ const QuizContainer: React.FC = () => {
               <img src="/univercidade.png" alt="Universidades" className="w-full object-contain rounded-2xl drop-shadow-sm" loading="lazy" />
             </div>
             <button
+              id="final-quiz-button"
+              className="btn-finalizar-quiz w-full py-3.5 rounded-xl bg-primary text-primary-foreground font-semibold text-base transition-all duration-300 hover:brightness-110 active:scale-[0.98] animate-pulse-slow"
               onClick={() => goNext()}
-              className="w-full py-3.5 rounded-xl bg-primary text-primary-foreground font-semibold text-base transition-all duration-300 hover:brightness-110 active:scale-[0.98] animate-pulse-slow"
               style={{ animation: "fadeInUp 0.4s ease-out 300ms both" }}
             >
               Continuar
