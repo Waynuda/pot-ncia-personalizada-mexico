@@ -692,7 +692,12 @@ const QuizContainer: React.FC = () => {
             <button
               id="final-quiz-button"
               className="btn-finalizar-quiz w-full py-3.5 rounded-xl bg-primary text-primary-foreground font-semibold text-base transition-all duration-300 hover:brightness-110 active:scale-[0.98] animate-pulse-slow"
-              onClick={() => goNext()}
+              onClick={() => {
+                if (typeof (window as any).fbq === "function") {
+                  (window as any).fbq("track", "CompleteRegistration");
+                }
+                goNext();
+              }}
               style={{ animation: "fadeInUp 0.4s ease-out 300ms both" }}
             >
               Continuar
