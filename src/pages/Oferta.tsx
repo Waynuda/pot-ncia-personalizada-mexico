@@ -4,13 +4,7 @@ import CheckoutPage from "@/components/quiz/CheckoutPage";
 
 const Oferta = () => {
   const location = useLocation();
-  const name = location.state?.name || "Campeão";
-
-  useEffect(() => {
-    if (typeof (window as any).fbq === "function") {
-      (window as any).fbq("track", "PageView");
-    }
-  }, []);
+  const name = location.state?.name || "Campeón";
 
   return <CheckoutPage name={name} />;
 };
