@@ -91,11 +91,11 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
               </div>
 
               <div className="bg-green-50 rounded-xl p-4 w-full md:w-auto text-right border border-green-100 flex flex-col justify-center items-end">
-                 <div className="text-sm text-gray-500 line-through">De $500</div>
+                 <div className="text-sm text-gray-500 line-through">De $2</div>
                  <div className="text-xs text-gray-500 mb-1">Por solo</div>
                  <div className="flex items-baseline justify-end gap-0.5">
                     <span className="text-3xl font-bold text-green-700">$</span>
-                    <span className="text-5xl font-black text-green-600 tracking-tighter">149</span>
+                    <span className="text-5xl font-black text-green-600 tracking-tighter">6.99</span>
                   </div>
                  <p className="text-xs text-green-700 font-semibold mt-1">💳 Pago único · Acceso vitalicio</p>
               </div>
@@ -106,7 +106,7 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
                 href="https://pay.hotmart.com/S105516336W?checkoutMode=10"
                 className="hotmart-fb block w-full py-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-extrabold text-xl uppercase transition-all shadow-[0_8px_20px_-6px_rgba(22,163,74,0.5)] hover:shadow-[0_12px_25px_-6px_rgba(22,163,74,0.6)] hover:-translate-y-1 active:translate-y-0 active:shadow-none animate-pulse-slow text-center"
               >
-                OBTENER AHORA POR $149
+                OBTENER AHORA POR $6.99 USD
               </a>
               
               {/* Security Badges under button */}
@@ -317,7 +317,7 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
               </p>
               <p className="text-orange-700 font-extrabold items-center justify-center gap-2 flex flex-col pt-4">
                 <span className="animate-bounce text-3xl">↓</span>
-                Haz clic en el botón de abajo y finaliza tu acceso por solo $149
+                Haz clic en el botón de abajo y finaliza tu acceso por solo $6.99 USD
               </p>
             </div>
           </div>
@@ -327,7 +327,7 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
                href="https://pay.hotmart.com/S105516336W?checkoutMode=10"
                className="hotmart-fb block w-full py-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-extrabold text-xl uppercase transition-all shadow-[0_8px_20px_-6px_rgba(22,163,74,0.5)] hover:shadow-[0_12px_25px_-6px_rgba(22,163,74,0.6)] hover:-translate-y-1 active:translate-y-0 active:shadow-none animate-pulse-slow text-center"
              >
-                OBTENER AHORA POR $149
+                OBTENER AHORA POR $6.99 USD
               </a>
           </div>
         </div>
@@ -373,7 +373,7 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ name }) => {
              href="https://pay.hotmart.com/S105516336W?checkoutMode=10"
              className="hotmart-fb block w-full py-4 rounded-xl bg-green-600 hover:bg-green-500 text-white font-extrabold text-xl uppercase transition-all shadow-[0_8px_20px_-6px_rgba(22,163,74,0.5)] hover:shadow-[0_12px_25px_-6px_rgba(22,163,74,0.6)] hover:-translate-y-1 active:translate-y-0 active:shadow-none text-center"
            >
-              OBTENER AHORA POR $149
+              OBTENER AHORA POR $6.99 USD
             </a>
            <p className="text-center text-xs text-gray-500 mt-4">
              Acceso inmediato al material por correo electrónico
