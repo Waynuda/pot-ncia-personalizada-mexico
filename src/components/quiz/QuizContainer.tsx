@@ -13,13 +13,66 @@ import bodySlim from "@/assets/body-slim.png";
 import bodyMedium from "@/assets/body-medium.png";
 import bodyOverweight from "@/assets/body-overweight.png";
 
+// ─── TRACKING SUPABASE ───────────────────────────────────────────────────────
+const SUPABASE_URL = 'https://kglbkohmprsfwbltcaly.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_PXDKmJqTWih11oarHijLkQ_TLDma-ZI';
+const QUIZ_ID = 'nexormen';
+
+const getSessionId = (): string => {
+  let sid = sessionStorage.getItem('quiz_session_id');
+  if (!sid) {
+    sid = Math.random().toString(36).substring(2) + Date.now().toString(36);
+    sessionStorage.setItem('quiz_session_id', sid);
+  }
+  return sid;
+};
+
+const trackEtapa = async (
+  etapa: number,
+  etapaNome: string,
+  acao: 'iniciou' | 'avançou' | 'completou'
+) => {
+  try {
+    await fetch(`${SUPABASE_URL}/rest/v1/quiz_eventos`, {
+      method: 'POST',
+      headers: {
+        'apikey': SUPABASE_KEY,
+        'Authorization': `Bearer ${SUPABASE_KEY}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        session_id: getSessionId(),
+        quiz_id: QUIZ_ID,
+        etapa,
+        etapa_nome: etapaNome,
+        acao
+      })
+    });
+  } catch (_) {}
+};
+
+const ETAPA_NOMES: Record<number, string> = {
+  1: 'age', 2: 'body-type', 3: 'intro-video', 4: 'goals',
+  5: 'benefits-1', 6: 'duration-sex', 7: 'premature-ejac',
+  8: 'control-sex-scale', 9: 'control-mast-scale', 10: 'desired-duration',
+  11: 'pelvic-training', 12: 'program-overview', 13: 'erection-strength',
+  14: 'difficulty-time', 15: 'morning-erections', 16: 'pre-sex-erection',
+  17: 'double-sex', 18: 'muscle-info', 19: 'success-story',
+  20: 'daily-activity', 21: 'stress-level', 22: 'physical-activity',
+  23: 'screen-time', 24: 'porn-frequency', 25: 'habits',
+  26: 'civil-status', 27: 'sexual-concern', 28: 'monthly-frequency',
+  29: 'libido-scale', 30: 'quick-solutions', 31: 'personal-name',
+  32: 'final-summary'
+};
+// ─────────────────────────────────────────────────────────────────────────────
+
 const TOTAL_STEPS = 32;
 
 const ProcessingScreen: React.FC<{ onComplete: () => void }> = ({ onComplete }) => {
   const [progress, setProgress] = useState(0);
 
   React.useEffect(() => {
-    const duration = 10000; // 10 seconds
+    const duration = 10000;
     const intervalTime = 50;
     const steps = duration / intervalTime;
     let currentStep = 0;
@@ -86,12 +139,29 @@ const QuizContainer: React.FC = () => {
     }
   }, []);
 
-  
+  // ─── TRACKING: regista cada etapa no Supabase ─────────────────────────────
+  useEffect(() => {
+    if (step < 1 || step > TOTAL_STEPS) return;
+    const nome = ETAPA_NOMES[step] || `etapa-${step}`;
+    if (step === 1) {
+      getSessionId();
+      trackEtapa(1, nome, 'iniciou');
+    } else if (step === TOTAL_STEPS) {
+      trackEtapa(step, nome, 'avançou');
+    } else {
+      trackEtapa(step, nome, 'avançou');
+    }
+  }, [step]);
+  // ─────────────────────────────────────────────────────────────────────────
 
   const goNext = useCallback((value?: any) => {
     if (animating) return;
     if (value !== undefined) {
       setAnswers((prev) => ({ ...prev, [step]: value }));
+    }
+    // Regista conclusão ao sair da etapa 32
+    if (step === TOTAL_STEPS) {
+      trackEtapa(TOTAL_STEPS, ETAPA_NOMES[TOTAL_STEPS], 'completou');
     }
     setAnimating(true);
     setDirection("exit");
@@ -687,7 +757,6 @@ const QuizContainer: React.FC = () => {
               id="final-quiz-button"
               className="btn-finalizar-quiz w-full py-3.5 rounded-xl bg-primary text-primary-foreground font-semibold text-base transition-all duration-300 hover:brightness-110 active:scale-[0.98] animate-pulse-slow"
               onClick={() => {
-                
                 goNext();
               }}
               style={{ animation: "fadeInUp 0.4s ease-out 300ms both" }}
