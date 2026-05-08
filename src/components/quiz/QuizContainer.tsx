@@ -30,7 +30,7 @@ const getSessionId = (): string => {
 const trackEtapa = async (
   etapa: number,
   etapaNome: string,
-  acao: 'iniciou' | 'avançou' | 'completou'
+  acao: 'visualizou' | 'iniciou' | 'avançou' | 'completou'
 ) => {
   try {
     await fetch(`${SUPABASE_URL}/rest/v1/quiz_eventos`, {
@@ -139,18 +139,19 @@ const QuizContainer: React.FC = () => {
     }
   }, []);
 
+  // ─── TRACKING: regista visualização ao abrir o quiz ──────────────────────
+  useEffect(() => {
+    getSessionId();
+    trackEtapa(1, 'age', 'visualizou');
+  }, []);
+
   // ─── TRACKING: regista cada etapa no Supabase ─────────────────────────────
   useEffect(() => {
-    if (step < 1 || step > TOTAL_STEPS) return;
+    if (step === 1) return; // já registado como 'visualizou' ao montar
+    if (step > TOTAL_STEPS) return;
     const nome = ETAPA_NOMES[step] || `etapa-${step}`;
-    if (step === 1) {
-      getSessionId();
-      trackEtapa(1, nome, 'iniciou');
-    } else if (step === TOTAL_STEPS) {
-      trackEtapa(step, nome, 'avançou');
-    } else {
-      trackEtapa(step, nome, 'avançou');
-    }
+    const acao = step === TOTAL_STEPS ? 'completou' : 'avançou';
+    trackEtapa(step, nome, acao);
   }, [step]);
   // ─────────────────────────────────────────────────────────────────────────
 
