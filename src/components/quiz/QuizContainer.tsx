@@ -2,9 +2,9 @@ import React, { useState, useCallback, useEffect, useRef } from "react";
 import { Navigate } from "react-router-dom";
 import QuizHeader from "./QuizHeader";
 import OptionCard from "./OptionCard";
-import ScaleSelector from "./ScaleSelector";
+import ScaleSelector de "./ScaleSelector";
 import MultiSelect from "./MultiSelect";
-import EducativeSlide from "./EducativeSlide";
+Importe EducativeSlide de "./EducativeSlide";
 import ComparisonChart from "./ComparisonChart";
 import CheckoutPage from "./CheckoutPage";
 import { Timer, Heart, Zap, Shield, Dumbbell, Brain, Users, Clock, Activity, Eye, Coffee, Cigarette, Wine, Candy, Utensils, Briefcase, Home, Footprints, HardHat, Monitor, Star } from "lucide-react";
@@ -13,88 +13,106 @@ import bodySlim from "@/assets/body-slim.png";
 import bodyMedium from "@/assets/body-medium.png";
 import bodyOverweight from "@/assets/body-overweight.png";
 
-// ─── TRACKING SUPABASE ───────────────────────────────────────────────────────
+// ─── RASTREAMENTO SUPABASE ─────────────────────────────────────────────────────────
 const SUPABASE_URL = 'https://kglbkohmprsfwbltcaly.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_PXDKmJqTWih11oarHijLkQ_TLDma-ZI';
 const QUIZ_ID = 'nexormen';
 
 const getSessionId = (): string => {
   let sid = sessionStorage.getItem('quiz_session_id');
-  if (!sid) {
+  se (!sid) {
     sid = Math.random().toString(36).substring(2) + Date.now().toString(36);
     sessionStorage.setItem('quiz_session_id', sid);
   }
-  return sid;
+  retornar sid;
+};
+
+deixe geoCache: { pais: string; cidade: string } | nulo = nulo;
+
+const getGeo = async (): Promessa<{ pais: string; cidade: string }> => {
+  if (geoCache) retorna geoCache;
+  tentar {
+    const res = await fetch('https://ipapi.co/json/');
+    const data = await res.json();
+    geoCache = { pais: data.nome_do_país || 'Desconhecido', cidade: data.city || 'Desconhecido' };
+  } pegar (_) {
+    geoCache = { pais: 'Desconhecido', cidade: 'Desconhecido' };
+  }
+  retornar geoCache;
 };
 
 const trackEtapa = async (
-  etapa: number,
+  etapa: número,
   etapaNome: string,
-  acao: 'visualizou' | 'iniciou' | 'avançou' | 'completou'
+  acao: 'visualizou' | 'iniciado' | 'avançou' | 'completo'
 ) => {
-  try {
+  tentar {
+    const geo = await getGeo();
     await fetch(`${SUPABASE_URL}/rest/v1/quiz_eventos`, {
-      method: 'POST',
-      headers: {
+      método: 'POST',
+      cabeçalhos: {
         'apikey': SUPABASE_KEY,
-        'Authorization': `Bearer ${SUPABASE_KEY}`,
+        'Autorização': `Portador ${SUPABASE_KEY}`,
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
+      corpo: JSON.stringify({
         session_id: getSessionId(),
         quiz_id: QUIZ_ID,
         etapa,
         etapa_nome: etapaNome,
-        acao
+        cacau,
+        pais: geo.pais,
+        cidade: geo.cidade,
+        última_vista: novo Date().toISOString()
       })
     });
-  } catch (_) {}
+  } pegar (_) {}
 };
 
-const ETAPA_NOMES: Record<number, string> = {
-  1: 'age', 2: 'body-type', 3: 'intro-video', 4: 'goals',
-  5: 'benefits-1', 6: 'duration-sex', 7: 'premature-ejac',
-  8: 'control-sex-scale', 9: 'control-mast-scale', 10: 'desired-duration',
-  11: 'pelvic-training', 12: 'program-overview', 13: 'erection-strength',
-  14: 'difficulty-time', 15: 'morning-erections', 16: 'pre-sex-erection',
-  17: 'double-sex', 18: 'muscle-info', 19: 'success-story',
-  20: 'daily-activity', 21: 'stress-level', 22: 'physical-activity',
-  23: 'screen-time', 24: 'porn-frequency', 25: 'habits',
-  26: 'civil-status', 27: 'sexual-concern', 28: 'monthly-frequency',
-  29: 'libido-scale', 30: 'quick-solutions', 31: 'personal-name',
-  32: 'final-summary'
+const ETAPA_NOMES: Registro<número, string> = {
+  1: 'idade', 2: 'tipo físico', 3: 'vídeo de apresentação', 4: 'objetivos',
+  5: 'benefícios-1', 6: 'duração-sexo', 7: 'ejac prematuro',
+  8: 'escala de controle de sexo', 9: 'escala de controle de mastro', 10: 'duração desejada',
+  11: 'treinamento pélvico', 12: 'visão geral do programa', 13: 'força da ereção',
+  14: 'período de dificuldade', 15: 'ereções matinais', 16: 'ereção pré-sexual',
+  17: 'sexo duplo', 18: 'informações musculares', 19: 'história de sucesso',
+  20: 'atividade diária', 21: 'nível de estresse', 22: 'atividade física',
+  23: 'tempo de tela', 24: 'frequência de pornografia', 25: 'hábitos',
+  26: 'estado civil', 27: 'preocupação sexual', 28: 'frequência mensal',
+  29: 'escala de libido', 30: 'soluções rápidas', 31: 'nome pessoal',
+  32: 'resumo final'
 };
 // ─────────────────────────────────────────────────────────────────────────────
 
-const TOTAL_STEPS = 32;
+const TOTAL_PASSOS = 32;
 
 const ProcessingScreen: React.FC<{ onComplete: () => void }> = ({ onComplete }) => {
-  const [progress, setProgress] = useState(0);
+  const [progresso, definirProgresso] = usarEstado(0);
 
   React.useEffect(() => {
     const duration = 10000;
     const intervalTime = 50;
     const steps = duration / intervalTime;
-    let currentStep = 0;
+    seja currentStep = 0;
 
-    const interval = setInterval(() => {
-      currentStep++;
+    const intervalo = setInterval(() => {
+      EtapaAtual++;
       setProgress(Math.min(100, Math.floor((currentStep / steps) * 100)));
-      if (currentStep >= steps) {
-        clearInterval(interval);
+      se (passoAtual >= passos) {
+        clearInterval(intervalo);
         setTimeout(onComplete, 500);
       }
-    }, intervalTime);
+    }, intervaloTempo);
 
-    return () => clearInterval(interval);
+    retornar () => clearInterval(intervalo);
   }, [onComplete]);
 
-  return (
+  retornar (
     <div className="min-h-screen bg-background flex flex-col items-center justify-center p-6 text-center space-y-8 animate-in fade-in duration-500">
       <div className="space-y-4">
-         <h1 className="text-2xl font-bold text-foreground">Analizando tus respuestas...</h1>
+         <h1 className="text-2xl font-bold text-foreground">Analizando suas respostas...</h1>
          <p className="text-muted-foreground max-w-xs mx-auto">
-           Estamos creando tu Plan de Entrenamiento de Ejercicios Kegel personalizado.
+           Estamos criando seu Plano de Treinamento de Ejercicios Kegel personalizado.
          </p>
       </div>
 
@@ -104,16 +122,16 @@ const ProcessingScreen: React.FC<{ onComplete: () => void }> = ({ onComplete }) 
           <circle cx="50" cy="50" r="45" fill="transparent" stroke="currentColor" strokeWidth="8" className="text-primary transition-all duration-75 ease-linear" strokeDasharray="283" strokeDashoffset={283 - (progress / 100) * 283} />
         </svg>
         <div className="absolute inset-0 flex items-center justify-center flex-col">
-          <span className="text-4xl font-bold text-foreground">{progress}%</span>
+          <span className="text-4xl font-bold text-foreground">{progresso}%</span>
         </div>
       </div>
 
       <div className="space-y-3 text-sm text-muted-foreground w-full max-w-xs text-left mx-auto bg-card border-2 border-border p-4 rounded-xl shadow-sm">
          <p className="flex items-center gap-2">
-           <Activity className={progress > 15 ? "text-primary transition-colors" : "text-muted transition-colors"} size={16} /> Verificando edad y biotipo...
+           <Activity className={progress > 15 ? "text-primary transition-colors" : "text-muted transition-colors"} size={16} /> Verificando idade e biotipo...
          </p>
          <p className="flex items-center gap-2">
-           <Activity className={progress > 45 ? "text-primary transition-colors" : "text-muted transition-colors"} size={16} /> Evaluando la fuerza del músculo pélvico...
+           <Atividade className={progresso > 45 ? "text-primary transaction-colors" : "text-muted transaction-colors"} size={16} /> Avaliando a força do músculo pélvico...
          </p>
          <p className="flex items-center gap-2">
            <Activity className={progress > 75 ? "text-primary transition-colors" : "text-muted transition-colors"} size={16} /> Estructurando rutina avanzada...
@@ -124,7 +142,7 @@ const ProcessingScreen: React.FC<{ onComplete: () => void }> = ({ onComplete }) 
 };
 
 const QuizContainer: React.FC = () => {
-  const [step, setStep] = useState(1);
+  const [passo, definirPasso] = useState(1);
   const [answers, setAnswers] = useState<Record<number, any>>({});
   const [animating, setAnimating] = useState(false);
   const [direction, setDirection] = useState<"enter" | "exit">("enter");
@@ -132,57 +150,57 @@ const QuizContainer: React.FC = () => {
 
   const fireGa4 = useCallback((event: string, params?: Record<string, any>) => {
     const key = params ? `${event}_${JSON.stringify(params)}` : event;
-    if (firedEvents.current.has(key)) return;
+    se (firedEvents.current.has(key)) retorne;
     firedEvents.current.add(key);
-    if (typeof window !== "undefined" && (window as any).gtag) {
-      (window as any).gtag("event", event, params);
+    se (tipo de janela !== "undefined" && (janela como qualquer).gtag) {
+      (janela como qualquer).gtag("evento", evento, parâmetros);
     }
   }, []);
 
-  // ─── TRACKING: regista visualização ao abrir o quiz ──────────────────────
+  // ─── TRACKING: registro visualizador ao abrir o quiz ──────────────────────
   useEffect(() => {
-    getSessionId();
-    trackEtapa(1, 'age', 'visualizou');
+    obterIDdaSessão();
+    trackEtapa(1, 'idade', 'visualizou');
   }, []);
 
-  // ─── TRACKING: regista cada etapa no Supabase ─────────────────────────────
+  // ─── RASTREAMENTO: registro cada etapa no Supabase ─────────────────────────────
   useEffect(() => {
-    if (step === 1) return; // já registado como 'visualizou' ao montar
-    if (step > TOTAL_STEPS) return;
-    const nome = ETAPA_NOMES[step] || `etapa-${step}`;
+    if (etapa === 1) retornar; // já registrado como 'visualizou' ao montar
+    se (passo > TOTAL_PASSOS) retorne;
+    const nome = ETAPA_NOMES[etapa] || `etapa-${passo}`;
     const acao = step === TOTAL_STEPS ? 'completou' : 'avançou';
-    trackEtapa(step, nome, acao);
-  }, [step]);
+    trackEtapa(passo, nome, acao);
+  }, [etapa]);
   // ─────────────────────────────────────────────────────────────────────────
 
   const goNext = useCallback((value?: any) => {
-    if (animating) return;
-    if (value !== undefined) {
+    se (animação) retornar;
+    se (valor !== indefinido) {
       setAnswers((prev) => ({ ...prev, [step]: value }));
     }
-    // Regista conclusão ao sair da etapa 32
-    if (step === TOTAL_STEPS) {
+    // Registro concluído ao sair da etapa 32
+    se (passo === TOTAL_PASSOS) {
       trackEtapa(TOTAL_STEPS, ETAPA_NOMES[TOTAL_STEPS], 'completou');
     }
     setAnimating(true);
-    setDirection("exit");
+    setDirection("saída");
     setTimeout(() => {
       setStep((s) => Math.min(s + 1, TOTAL_STEPS + 2));
       setDirection("enter");
       setTimeout(() => setAnimating(false), 400);
     }, 300);
-  }, [step, animating]);
+  }, [passo, animando]);
 
   const goBack = useCallback(() => {
-    if (animating || step <= 1) return;
+    se (animando || passo <= 1) retornar;
     setAnimating(true);
-    setDirection("exit");
+    setDirection("saída");
     setTimeout(() => {
       setStep((s) => s - 1);
       setDirection("enter");
       setTimeout(() => setAnimating(false), 400);
     }, 300);
-  }, [step, animating]);
+  }, [passo, animando]);
 
   const selectOption = (value: any) => {
     setAnswers((prev) => ({ ...prev, [step]: value }));
@@ -194,50 +212,50 @@ const QuizContainer: React.FC = () => {
     setTimeout(() => goNext(), 500);
   };
 
-  if (step === TOTAL_STEPS + 1) {
-    return <ProcessingScreen onComplete={() => setStep(TOTAL_STEPS + 2)} />;
+  se (passo === TOTAL_PASSOS + 1) {
+    retornar <ProcessingScreen onComplete={() => setStep(TOTAL_STEPS + 2)} />;
   }
 
-  if (step > TOTAL_STEPS + 1) {
-    return <Navigate to="/oferta" state={{ name: answers[31] || "Campeón" }} replace />;
+  se (passo > TOTAL_PASSOS + 1) {
+    retornar <Navegar para="/oferta" estado={{ nome: respostas[31] || "Campeão" }} substituir />;
   }
 
   const ageOptions = [
-    { label: "18-30 años", img: "/18.png" },
-    { label: "31-45 años", img: "/31.png" },
-    { label: "46-55 años", img: "/46.png" },
-    { label: "+56 años", img: "/56.png" },
+    { label: "18-30 anos", img: "/18.png" },
+    { label: "31-45 anos", img: "/31.png" },
+    { label: "46-55 anos", img: "/46.png" },
+    { label: "+56 anos", img: "/56.png" },
   ];
 
   const bodyOptions = [
     { label: "Delgado", sub: "Metabolismo acelerado", img: "/Delgado.png" },
     { label: "Promedio", sub: "Composição equilibrada", img: "/Medio.png" },
-    { label: "Sobrepeso", sub: "Tendencia a acumular grasa", img: "/acima_do_peso.png" },
+    { label: "Sobrepeso", sub: "Tendência de acúmulo de gordura", img: "/acima_do_peso.png" },
   ];
 
   const renderStep = () => {
-    switch (step) {
-      case 1:
-        return (
+    switch (passo) {
+      caso 1:
+        retornar (
           <div className="space-y-4">
             <div className="flex justify-center" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
               <span className="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
-                <Clock className="w-3.5 h-3.5" /> Quiz de 2 minutos
+                <Clock className="w-3.5 h-3.5" /> Questionário de 2 minutos
               </span>
             </div>
             <h2 className="text-lg font-bold text-foreground text-center leading-tight" style={{ animation: "fadeInUp 0.4s ease-out 100ms both" }}>
-              Plan de ejercicios para elevar tu potencia sexual según tu edad
+              Plano de exercícios para aumentar sua potência sexual de acordo com sua idade
             </h2>
             <p className="text-sm text-muted-foreground text-center" style={{ animation: "fadeInUp 0.4s ease-out 100ms both" }}>
-              Selecciona tu rango de edad
+              Selecione sua idade
             </p>
             <div className="grid grid-cols-2 gap-3">
               {ageOptions.map((opt, i) => (
                 <div
-                  key={opt.label}
+                  chave={opt.rótulo}
                   onClick={() => selectOption(opt.label)}
                   className={`relative overflow-hidden cursor-pointer rounded-xl border-2 transition-all duration-300 hover:scale-[1.02] hover:shadow-md active:scale-[0.98] flex flex-col ${
-                    answers[1] === opt.label
+                    respostas[1] === opt.label
                       ? "border-primary bg-accent shadow-sm"
                       : "border-border bg-card hover:border-primary/40"
                   }`}
@@ -250,28 +268,28 @@ const QuizContainer: React.FC = () => {
                 </div>
               ))}
             </div>
-            <div 
-              className="mt-6 text-[10px] text-center text-muted-foreground/60 px-4" 
+            <div
+              className="mt-6 text-[10px] text-center text-muted-foreground/60px-4"
               style={{ animation: "fadeInUp 0.4s ease-out 300ms both" }}
             >
-              Al elegir tu edad y continuar, aceptas nuestros <a href="#" className="underline hover:text-primary transition-colors">Términos de Servicio</a> | <a href="#" className="underline hover:text-primary transition-colors">Política de Privacidad</a>
+              Ao escolher sua idade e continuar, aceite nossos <a href="#" className="underline hover:text-primary transaction-colors">Términos de Serviço</a> | <a href="#" className="underline hover:text-primary transaction-colors">Política de Privacidade</a>
             </div>
           </div>
         );
 
-      case 2:
-        return (
+      caso 2:
+        retornar (
           <div className="space-y-4">
             <h2 className="text-lg font-bold text-foreground text-center" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
-              Elige tu tipo de cuerpo
+              Escolha seu tipo de corpo
             </h2>
             <div className="space-y-3">
               {bodyOptions.map((opt, i) => (
                 <div
-                  key={opt.label}
+                  chave={opt.rótulo}
                   onClick={() => selectOption(opt.label)}
                   className={`relative overflow-hidden cursor-pointer rounded-xl border-2 p-4 transition-all duration-300 hover:scale-[1.02] hover:shadow-md active:scale-[0.98] flex items-center gap-4 ${
-                    answers[2] === opt.label
+                    respostas[2] === opt.label
                       ? "border-primary bg-accent shadow-sm"
                       : "border-border bg-card hover:border-primary/40"
                   }`}
@@ -283,7 +301,7 @@ const QuizContainer: React.FC = () => {
                     <p className="text-sm text-muted-foreground mt-0.5">{opt.sub}</p>
                   </div>
                   <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all duration-300 flex-shrink-0 ${
-                    answers[2] === opt.label ? "border-primary bg-primary" : "border-muted-foreground/30"
+                    respostas[2] === opt.label ? "border-primary bg-primary" : "border-muted-foreground/30"
                   }`}>
                     {answers[2] === opt.label && (
                       <svg className="w-3 h-3 text-primary-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
@@ -297,16 +315,16 @@ const QuizContainer: React.FC = () => {
           </div>
         );
 
-      case 3:
-        return (
+      caso 3:
+        retornar (
           <div className="space-y-6 text-center">
             <div style={{ animation: "fadeInUp 0.4s ease-out both" }}>
               <img src="/etapa_3.png" alt="Resultados" className="w-full object-cover rounded-2xl drop-shadow-sm" loading="lazy" />
             </div>
             <p className="text-xl font-bold text-foreground leading-tight" style={{ animation: "fadeInUp 0.4s ease-out 150ms both" }}>
-              Hemos ayudado a más de 150.000 hombres a mejorar su desempeño sexual
+              Ajudamos mais de 150.000 homens a melhorar seu desempenho sexual
             </p>
-            <button
+            <botão
               onClick={() => goNext()}
               className="w-full py-3.5 rounded-xl bg-primary text-primary-foreground font-semibold text-base transition-all duration-300 hover:brightness-110 active:scale-[0.98] animate-pulse-slow"
               style={{ animation: "fadeInUp 0.4s ease-out 300ms both" }}
@@ -316,19 +334,19 @@ const QuizContainer: React.FC = () => {
           </div>
         );
 
-      case 4:
-        return (
+      caso 4:
+        retornar (
           <div className="space-y-4">
             <h2 className="text-lg font-bold text-foreground text-center" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
-              Elige tus objetivos
+              Escolha seus objetivos
             </h2>
             <p className="text-xs text-muted-foreground text-center" style={{ animation: "fadeInUp 0.4s ease-out 100ms both" }}>
-              Selecciona todos los que apliquen
+              Selecione todos os que você deseja aplicar
             </p>
-            <MultiSelect
-              options={["Durar más en la cama", "Orgasmos más intensos", "Erecciones más firmes"]}
-              selected={answers[4] || []}
-              onChange={(v) => setAnswers((p) => ({ ...p, [4]: v }))}
+            <Seleção múltipla
+              options={["Durar mais na cama", "Orgasmos mais intensos", "Ereções mais firmes"]}
+              selecionado={respostas[4] || []}
+              onChange={(v) => setAnswers((p) => ({ ...p, [4]: ​​v }))}
             />
             {(answers[4]?.length > 0) && (
               <button onClick={() => goNext()} className="w-full py-3.5 rounded-xl bg-primary text-primary-foreground font-semibold transition-all hover:brightness-110 active:scale-[0.98]" style={{ animation: "fadeInUp 0.3s ease-out both" }}>
@@ -338,24 +356,24 @@ const QuizContainer: React.FC = () => {
           </div>
         );
 
-      case 5:
-        return (
+      caso 5:
+        retornar (
           <div className="space-y-6 text-center">
             <div className="space-y-4" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
               <p className="font-bold text-foreground text-lg leading-snug">
-                Tu capacidad de durar más tiempo proviene de la fuerza y salud de los músculos del suelo pélvico.
+                Sua capacidade de durar mais tempo proporciona força e saúde aos músculos do solo pélvico.
               </p>
               <p className="font-bold text-foreground text-lg leading-snug">
-                Y cuanto más envejeces, más débil se vuelve tu músculo masculino.
+                E quando mais envejece, mais débil se torna seu músculo masculino.
               </p>
               <p className="font-bold text-foreground text-lg leading-snug">
-                Músculos fuertes te ayudan a tener erecciones duras de nuevo, controlar la eyaculación y durar más en la cama.
+                Músculos fortes ajudam você a ter ereções duradouras, controlar a ejaculação e durar mais na cama.
               </p>
             </div>
             <div style={{ animation: "fadeInUp 0.4s ease-out 150ms both" }}>
               <img src="/etapa_5.png" alt="Músculo pélvico" className="w-full object-cover rounded-2xl drop-shadow-sm" loading="lazy" />
             </div>
-            <button
+            <botão
               onClick={() => goNext()}
               className="w-full py-3.5 rounded-xl bg-primary text-primary-foreground font-semibold text-base transition-all duration-300 hover:brightness-110 active:scale-[0.98] animate-pulse-slow"
               style={{ animation: "fadeInUp 0.4s ease-out 300ms both" }}
@@ -365,23 +383,23 @@ const QuizContainer: React.FC = () => {
           </div>
         );
 
-      case 6:
-        return (
+      caso 6:
+        retornar (
           <div className="space-y-4">
             <h2 className="text-lg font-bold text-foreground text-center" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
-              ¿Cuánto tiempo, en promedio, dura tu relación sexual?
+              Quanto tempo, em pouco tempo, dura sua relação sexual?
             </h2>
-            {["Menos de 2 minutos", "2 a 7 minutos", "7 a 15 minutos", "Más de 15 minutos"].map((opt, i) => (
+            {["Menos de 2 minutos", "2 a 7 minutos", "7 a 15 minutos", "Mais de 15 minutos"].map((opt, i) => (
               <OptionCard key={opt} label={opt} icon={<Timer className="w-5 h-5" />} selected={answers[6] === opt} onClick={() => selectOption(opt)} delay={i * 80} />
             ))}
           </div>
         );
 
-      case 7:
-        return (
+      caso 7:
+        retornar (
           <div className="space-y-4">
             <h2 className="text-lg font-bold text-foreground text-center" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
-              ¿Con qué frecuencia experimentas eyaculación precoz?
+              Com que frequência você experimenta a ejaculação precoce?
             </h2>
             {["Nunca", "A veces", "La mayoría de las veces"].map((opt, i) => (
               <OptionCard key={opt} label={opt} selected={answers[7] === opt} onClick={() => selectOption(opt)} delay={i * 80} />
@@ -389,62 +407,62 @@ const QuizContainer: React.FC = () => {
           </div>
         );
 
-      case 8:
-        return (
+      caso 8:
+        retornar (
           <div className="space-y-6">
             <h2 className="text-lg font-bold text-foreground text-center" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
-              ¿Cuál es tu nivel de dificultad para controlar durante el sexo?
+              Qual é o seu nível de dificuldade para controlar durante o sexo?
             </h2>
-            <ScaleSelector value={answers[8] || null} onChange={selectScale} lowLabel="Ninguna dificultad" highLabel="Muy difícil" />
+            <ScaleSelector valor={respostas[8] || null} onChange={selectScale} lowLabel="Ninguém está dificultado" highLabel="Muito difícil" />
           </div>
         );
 
-      case 9:
-        return (
+      caso 9:
+        retornar (
           <div className="space-y-6">
             <h2 className="text-lg font-bold text-foreground text-center" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
-              ¿Cuál es tu nivel de dificultad para controlar durante la masturbación?
+              Qual é o seu nível de dificuldade para controlar durante a masturbação?
             </h2>
-            <ScaleSelector value={answers[9] || null} onChange={selectScale} lowLabel="Ninguna dificultad" highLabel="Muy difícil" />
+            <ScaleSelector valor={respostas[9] || null} onChange={selectScale} lowLabel="Ninguém está dificultado" highLabel="Muito difícil" />
           </div>
         );
 
-      case 10:
-        return (
+      caso 10:
+        retornar (
           <div className="space-y-4">
             <h2 className="text-lg font-bold text-foreground text-center" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
-              ¿Cuánto tiempo te gustaría durar?
+              Quanto tempo você vai durar?
             </h2>
-            {["10 a 15 minutos", "15 a 30 minutos", "30 a 60 minutos", "Más de 60 minutos"].map((opt, i) => (
+            {["10 a 15 minutos", "15 a 30 minutos", "30 a 60 minutos", "Mais de 60 minutos"].map((opt, i) => (
               <OptionCard key={opt} label={opt} icon={<Clock className="w-5 h-5" />} selected={answers[10] === opt} onClick={() => selectOption(opt)} delay={i * 80} />
             ))}
           </div>
         );
 
-      case 11:
-        return (
+      caso 11:
+        retornar (
           <div className="space-y-4">
             <h2 className="text-lg font-bold text-foreground text-center" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
-              ¿Has hecho algún tipo de entrenamiento para el suelo pélvico?
+              Você já teve algum tipo de treinamento para o solo pélvico?
             </h2>
-            {["Sí", "No, pero he oído hablar de ello", "Nunca", "¿Qué es el suelo pélvico?"].map((opt, i) => (
+            {["Sí", "Não, mas ele ouviu falar de ello", "Nunca", "¿Qué é o solo pélvico?"].map((opt, i) => (
               <OptionCard key={opt} label={opt} selected={answers[11] === opt} onClick={() => selectOption(opt)} delay={i * 80} />
             ))}
           </div>
         );
 
-      case 12:
-        return (
+      caso 12:
+        retornar (
           <div className="space-y-6 text-center">
             <div className="space-y-4" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
               <p className="font-bold text-foreground text-xl leading-snug">
-                El programa de Ejercicios de Nexor MEN ayuda a fortalecer los músculos del suelo pélvico y puede aumentar el tiempo promedio de relación hasta 7 veces
+                O programa de exercícios de Nexor MEN ajuda a fortalecer os músculos do solo pélvico e pode aumentar o tempo de relacionamento até 7 vezes
               </p>
             </div>
             <div className="relative overflow-hidden rounded-2xl drop-shadow-sm h-64 sm:h-72" style={{ animation: "fadeInUp 0.4s ease-out 150ms both" }}>
               <img src="/grafico.png" alt="Gráfico de desempenho" className="absolute bottom-0 left-0 w-full h-[125%] object-cover object-bottom" loading="lazy" />
             </div>
-            <button
+            <botão
               onClick={() => goNext()}
               className="w-full py-3.5 rounded-xl bg-primary text-primary-foreground font-semibold text-base transition-all duration-300 hover:brightness-110 active:scale-[0.98] animate-pulse-slow"
               style={{ animation: "fadeInUp 0.4s ease-out 300ms both" }}
@@ -454,11 +472,11 @@ const QuizContainer: React.FC = () => {
           </div>
         );
 
-      case 13:
-        return (
+      caso 13:
+        retornar (
           <div className="space-y-4">
             <h2 className="text-lg font-bold text-foreground text-center" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
-              ¿Cómo está la fuerza de tu erección?
+              Como está a força da sua ereção?
             </h2>
             {["Todo bien", "A veces tenho dificuldades", "Tengo dificultades frecuentes"].map((opt, i) => (
               <OptionCard key={opt} label={opt} selected={answers[13] === opt} onClick={() => selectOption(opt)} delay={i * 80} />
@@ -466,47 +484,47 @@ const QuizContainer: React.FC = () => {
           </div>
         );
 
-      case 14:
-        return (
+      caso 14:
+        retornar (
           <div className="space-y-4">
             <h2 className="text-lg font-bold text-foreground text-center" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
-              ¿Hace cuánto tiempo tienes estas dificultades?
+              Até que ponto você tem essas dificuldades?
             </h2>
-            {["Menos de 6 meses", "6 a 12 meses", "1 a 3 años", "3 a 5 años", "Más de 5 años"].map((opt, i) => (
+            {["Menos de 6 meses", "6 a 12 meses", "1 a 3 anos", "3 a 5 anos", "Mais de 5 anos"].map((opt, i) => (
               <OptionCard key={opt} label={opt} selected={answers[14] === opt} onClick={() => selectOption(opt)} delay={i * 60} />
             ))}
           </div>
         );
 
-      case 15:
-        return (
+      caso 15:
+        retornar (
           <div className="space-y-4">
             <h2 className="text-lg font-bold text-foreground text-center" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
-              ¿Con qué frecuencia tienes erecciones matutinas?
+              Com que frequência você tem ereções matinais?
             </h2>
-            {["Siempre", "Con frecuencia", "Raramente", "Nunca"].map((opt, i) => (
+            {["Siempre", "Com frequência", "Raramente", "Nunca"].map((opt, i) => (
               <OptionCard key={opt} label={opt} selected={answers[15] === opt} onClick={() => selectOption(opt)} delay={i * 80} />
             ))}
           </div>
         );
 
-      case 16:
-        return (
+      caso 16:
+        retornar (
           <div className="space-y-4">
             <h2 className="text-lg font-bold text-foreground text-center" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
-              ¿Tienes dificultad para lograr una erección antes del sexo?
+              Você tem dificuldades para conseguir uma ereção antes do sexo?
             </h2>
-            {["Siempre", "Con frecuencia", "Raramente", "Nunca"].map((opt, i) => (
+            {["Siempre", "Com frequência", "Raramente", "Nunca"].map((opt, i) => (
               <OptionCard key={opt} label={opt} selected={answers[16] === opt} onClick={() => selectOption(opt)} delay={i * 80} />
             ))}
           </div>
         );
 
-      case 17:
-        return (
+      caso 17:
+        retornar (
           <div className="space-y-4">
             <h2 className="text-lg font-bold text-foreground text-center" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
-              ¿Puedes tener sexo dos veces seguidas?
+              Você pode ter sexo das vezes seguidas?
             </h2>
             {["Sí, sin dificultad", "Sí, pero con mucho esfuerzo", "No puedo"].map((opt, i) => (
               <OptionCard key={opt} label={opt} selected={answers[17] === opt} onClick={() => selectOption(opt)} delay={i * 80} />
@@ -514,12 +532,12 @@ const QuizContainer: React.FC = () => {
           </div>
         );
 
-      case 18:
-        return (
+      caso 18:
+        retornar (
           <div className="space-y-6 text-center">
             <div className="space-y-4" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
               <p className="font-bold text-foreground text-xl leading-snug">
-                La calidad de la erección está directamente relacionada con la fuerza de los músculos del suelo pélvico.
+                A qualidade da ereção está diretamente relacionada à força dos músculos do solo pélvico.
               </p>
             </div>
             <div style={{ animation: "fadeInUp 0.4s ease-out 150ms both" }}>
@@ -527,13 +545,13 @@ const QuizContainer: React.FC = () => {
             </div>
             <div className="space-y-3" style={{ animation: "fadeInUp 0.4s ease-out 250ms both" }}>
               <p className="text-sm text-foreground leading-relaxed">
-                Uno de los tres músculos principales de esta región, esencial para la salud sexual masculina, <strong>es el músculo bulbocavernoso</strong>.
+                Um dos três músculos principais desta região, essencial para a saúde sexual masculina, <strong>é o músculo bulbocavernoso</strong>.
               </p>
               <p className="text-sm text-foreground leading-relaxed">
-                Permite que el pene se llene de sangre y mantenga la firmeza.
+                Deixe que o pênis fique cheio de sangue e mantenha a firmeza.
               </p>
             </div>
-            <button
+            <botão
               onClick={() => goNext()}
               className="w-full py-3.5 rounded-xl bg-primary text-primary-foreground font-semibold text-base transition-all duration-300 hover:brightness-110 active:scale-[0.98] animate-pulse-slow"
               style={{ animation: "fadeInUp 0.4s ease-out 350ms both" }}
@@ -543,11 +561,11 @@ const QuizContainer: React.FC = () => {
           </div>
         );
 
-      case 19:
-        return (
-          <EducativeSlide
-            title="El 84% de los usuarios mejoró significativamente"
-            description=""
+      caso 19:
+        retornar (
+          <Slide Educativo>
+            title="84% dos usuários melhoraram significativamente"
+            descrição=""
             visual={
               <div className="bg-accent rounded-2xl p-5 text-left space-y-3">
                 <div className="flex gap-1">
@@ -555,26 +573,26 @@ const QuizContainer: React.FC = () => {
                     <Star key={s} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                   ))}
                 </div>
-                <p className="text-sm text-foreground italic">
-                  "Después de 3 semanas siguiendo el plan, mi confianza cambió por completo. Puedo durar mucho más y mi pareja notó la diferencia. Lo recomiendo a ojos cerrados."
+                <p className="text-sm text-foreground itálico">
+                  "Depois de 3 semanas seguindo o plano, minha confiança mudou por completo. Puedo durar muito mais e minha pareja notou a diferença. Lo recomiendo a olhos cerrados."
                 </p>
-                <p className="text-xs font-bold text-foreground">— Rodrigo S., 34 años</p>
+                <p className="text-xs font-bold text-foreground">— Rodrigo S., 34 anos</p>
               </div>
             }
             onContinue={() => goNext()}
           />
         );
 
-      case 20:
-        return (
+      caso 20:
+        retornar (
           <div className="space-y-4">
             <h2 className="text-lg font-bold text-foreground text-center" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
               ¿Cómo es tu día a día?
             </h2>
             {[
-              { label: "Trabajo de oficina", icon: <Briefcase className="w-5 h-5" /> },
-              { label: "Caminatas y actividades ligeras", icon: <Footprints className="w-5 h-5" /> },
-              { label: "Trabajo físico pesado", icon: <HardHat className="w-5 h-5" /> },
+              { label: "Trabalho de escritório", icon: <Briefcase className="w-5 h-5" /> },
+              { label: "Caminatas e atividades leves", ícone: <Footprints className="w-5 h-5" /> },
+              { label: "Trabalho físico pesado", icon: <HardHat className="w-5 h-5" /> },
               { label: "Me quedo en casa la mayor parte del tiempo", icon: <Home className="w-5 h-5" /> },
             ].map((opt, i) => (
               <OptionCard key={opt.label} label={opt.label} icon={opt.icon} selected={answers[20] === opt.label} onClick={() => selectOption(opt.label)} delay={i * 80} />
@@ -582,33 +600,33 @@ const QuizContainer: React.FC = () => {
           </div>
         );
 
-      case 21:
-        return (
+      caso 21:
+        retornar (
           <div className="space-y-6">
             <h2 className="text-lg font-bold text-foreground text-center" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
-              ¿Cuál es tu nivel de estrés diario?
+              Qual é o seu nível de estresse diário?
             </h2>
-            <ScaleSelector value={answers[21] || null} onChange={selectScale} lowLabel="Muy bajo" highLabel="Muy alto" />
+            <ScaleSelector valor={respostas[21] || null} onChange={selectScale} lowLabel="Muito baixo" highLabel="Muito alto" />
           </div>
         );
 
-      case 22:
-        return (
+      caso 22:
+        retornar (
           <div className="space-y-4">
             <h2 className="text-lg font-bold text-foreground text-center" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
-              ¿Cuál es tu nivel de actividad física?
+              Qual é o seu nível de atividade física?
             </h2>
-            {["Hago ejercicio regularmente", "A veces faço exercícios", "Poco activo", "Nunca hago ejercicio"].map((opt, i) => (
+            {["Hago exercício regularmente", "A veces faço exercícios", "Poco ativo", "Nunca hago exercício"].map((opt, i) => (
               <OptionCard key={opt} label={opt} icon={<Activity className="w-5 h-5" />} selected={answers[22] === opt} onClick={() => selectOption(opt)} delay={i * 80} />
             ))}
           </div>
         );
 
-      case 23:
-        return (
+      caso 23:
+        retornar (
           <div className="space-y-4">
             <h2 className="text-lg font-bold text-foreground text-center" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
-              ¿Cuántas horas al día frente a pantallas?
+              Quantas horas no dia em frente às telas?
             </h2>
             {["Menos de 1 hora", "1 a 2 horas", "2 a 4 horas", "4 a 8 horas", "Más de 8 horas"].map((opt, i) => (
               <OptionCard key={opt} label={opt} icon={<Monitor className="w-5 h-5" />} selected={answers[23] === opt} onClick={() => selectOption(opt)} delay={i * 60} />
@@ -616,30 +634,30 @@ const QuizContainer: React.FC = () => {
           </div>
         );
 
-      case 24:
-        return (
+      caso 24:
+        retornar (
           <div className="space-y-4">
             <h2 className="text-lg font-bold text-foreground text-center" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
-              ¿Cuál es tu frecuencia de consumo de pornografía?
+              Qual é a sua frequência de consumo de pornografia?
             </h2>
-            {["Diariamente", "3 a 4 veces por semana", "1 vez por semana", "1 a 2 veces por mes", "Nunca"].map((opt, i) => (
+            {["Diariamente", "3 a 4 vezes por semana", "1 vez por semana", "1 a 2 vezes por mês", "Nunca"].map((opt, i) => (
               <OptionCard key={opt} label={opt} icon={<Eye className="w-5 h-5" />} selected={answers[24] === opt} onClick={() => selectOption(opt)} delay={i * 60} />
             ))}
           </div>
         );
 
-      case 25:
-        return (
+      caso 25:
+        retornar (
           <div className="space-y-4">
             <h2 className="text-lg font-bold text-foreground text-center" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
-              ¿Cuáles de estos hábitos son parte de tu rutina?
+              Quais desses hábitos fazem parte da sua rotina?
             </h2>
             <p className="text-xs text-muted-foreground text-center" style={{ animation: "fadeInUp 0.4s ease-out 100ms both" }}>
-              Selecciona todos los que apliquen
+              Selecione todos os que você deseja aplicar
             </p>
-            <MultiSelect
-              options={["Fumar", "Consumo de alcohol", "Consumo de dulces", "Fast Food", "Ninguno de los anteriores"]}
-              selected={answers[25] || []}
+            <Seleção múltipla
+              options={["Fumar", "Consumo de álcool", "Consumo de doces", "Fast Food", "Ninguno de los anteriores"]}
+              selecionado={respostas[25] || []}
               onChange={(v) => setAnswers((p) => ({ ...p, [25]: v }))}
             />
             {(answers[25]?.length > 0) && (
@@ -650,81 +668,81 @@ const QuizContainer: React.FC = () => {
           </div>
         );
 
-      case 26:
-        return (
+      caso 26:
+        retornar (
           <div className="space-y-4">
             <h2 className="text-lg font-bold text-foreground text-center" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
               ¿Cuál es tu estado civil?
             </h2>
-            {["Casado", "En una relación", "Soltero", "Prefiero no responder"].map((opt, i) => (
+            {["Casado", "Em uma relação", "Soltero", "Prefiro não responder"].map((opt, i) => (
               <OptionCard key={opt} label={opt} selected={answers[26] === opt} onClick={() => selectOption(opt)} delay={i * 80} />
             ))}
           </div>
         );
 
-      case 27:
-        return (
+      caso 27:
+        retornar (
           <div className="space-y-4">
             <h2 className="text-lg font-bold text-foreground text-center" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
-              ¿Tu desempeño sexual es motivo de preocupación en tus relaciones?
+              Seu desejo sexual é motivo de preocupação em suas relações?
             </h2>
-            {["Sí, gran preocupación", "Un poco", "No estoy seguro", "No"].map((opt, i) => (
+            {["Sim, grande preocupação", "Um pouco", "Não estou seguro", "Não"].map((opt, i) => (
               <OptionCard key={opt} label={opt} selected={answers[27] === opt} onClick={() => selectOption(opt)} delay={i * 80} />
             ))}
           </div>
         );
 
-      case 28:
-        return (
+      caso 28:
+        retornar (
           <div className="space-y-4">
             <h2 className="text-lg font-bold text-foreground text-center" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
-              ¿Cuál es tu frecuencia sexual mensual?
+              Qual é a sua frequência sexual menstrual?
             </h2>
-            {["Menos de 3 veces", "3 a 6 veces", "7 a 15 veces", "Más de 15 veces", "Prefiero no responder"].map((opt, i) => (
+            {["Menos de 3 vezes", "3 a 6 vezes", "7 a 15 vezes", "Mais de 15 vezes", "Prefiro sem resposta"].map((opt, i) => (
               <OptionCard key={opt} label={opt} selected={answers[28] === opt} onClick={() => selectOption(opt)} delay={i * 60} />
             ))}
           </div>
         );
 
-      case 29:
-        return (
+      caso 29:
+        retornar (
           <div className="space-y-6">
             <h2 className="text-lg font-bold text-foreground text-center" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
-              ¿Cómo está tu libido en los últimos 3 meses?
+              Como está sua libido nos últimos 3 meses?
             </h2>
-            <ScaleSelector value={answers[29] || null} onChange={selectScale} lowLabel="Muy baja" highLabel="Muy alta" />
+            <ScaleSelector valor={respostas[29] || null} onChange={selectScale} lowLabel="Muito baixo" highLabel="Muito alto" />
           </div>
         );
 
-      case 30:
-        return (
+      caso 30:
+        retornar (
           <div className="space-y-4">
             <h2 className="text-lg font-bold text-foreground text-center" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
-              ¿Has intentado soluciones de efecto rápido (pastillas, sprays, etc.)?
+              Você tentou soluções de efeito rápido (pastilhas, sprays, etc.)?
             </h2>
-            {["Sí, con frecuencia", "Sí, algunas veces", "Nunca lo he intentado"].map((opt, i) => (
+            {["Sí, com frequência", "Sí, algumas vezes", "Nunca o que ele tentou"].map((opt, i) => (
               <OptionCard key={opt} label={opt} selected={answers[30] === opt} onClick={() => selectOption(opt)} delay={i * 80} />
             ))}
           </div>
         );
 
-      case 31:
-        return (
+      caso 31:
+        retornar (
           <div className="space-y-5">
             <h2 className="text-lg font-bold text-foreground text-center" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
-              Ingresa tu primer nombre para personalizar tu plan
+              Ingresa seu primeiro nome para personalizar seu plano
             </h2>
             <p className="text-sm text-muted-foreground text-center" style={{ animation: "fadeInUp 0.4s ease-out 100ms both" }}>
-              Tu plan será preparado exclusivamente para ti
+              Seu plano será preparado exclusivamente para você
             </p>
             <div style={{ animation: "fadeInUp 0.4s ease-out 200ms both" }}>
-              <input
-                type="text"
-                placeholder="Tu primer nombre"
-                value={answers[31] || ""}
+              <entrada
+                tipo="texto"
+                placeholder="Seu primeiro nome"
+                valor={respostas[31] || ""}
                 onChange={(e) => setAnswers((p) => ({ ...p, [31]: e.target.value }))}
                 className="w-full rounded-xl border-2 border-border bg-card px-4 py-3.5 text-base text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-ring/20 transition-all"
-                autoFocus
+                autofoco
               />
             </div>
             {(answers[31]?.trim()?.length > 0) && (
@@ -735,26 +753,26 @@ const QuizContainer: React.FC = () => {
           </div>
         );
 
-      case 32:
-        return (
+      caso 32:
+        retornar (
           <div className="space-y-6 text-center">
             <div className="flex justify-center" style={{ animation: "fadeInUp 0.4s ease-out both" }}>
               <span className="inline-flex items-center gap-1.5 bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border border-primary/20">
-                <Shield className="w-3.5 h-3.5" /> Estás en buenas manos
+                <Shield className="w-3.5 h-3.5" /> Você está de boas mãos
               </span>
             </div>
             <div className="space-y-3" style={{ animation: "fadeInUp 0.4s ease-out 100ms both" }}>
               <h2 className="text-xl font-bold text-foreground leading-snug">
-                Basado en décadas de investigación científica
+                Baseado em décadas de investigação científica
               </h2>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Nuestro método está fundamentado en estudios de las mejores universidades del mundo sobre salud sexual masculina y fortalecimiento del suelo pélvico.
+                Nosso método é fundamentado em estudos das melhores universidades do mundo sobre saúde sexual masculina e fortalecimento do solo pélvico.
               </p>
             </div>
             <div style={{ animation: "fadeInUp 0.4s ease-out 200ms both" }}>
               <img src="/univercidade.png" alt="Universidades" className="w-full object-contain rounded-2xl drop-shadow-sm" loading="lazy" />
             </div>
-            <button
+            <botão
               id="final-quiz-button"
               className="btn-finalizar-quiz w-full py-3.5 rounded-xl bg-primary text-primary-foreground font-semibold text-base transition-all duration-300 hover:brightness-110 active:scale-[0.98] animate-pulse-slow"
               onClick={() => {
@@ -767,14 +785,14 @@ const QuizContainer: React.FC = () => {
           </div>
         );
 
-      default:
-        return null;
+      padrão:
+        retornar nulo;
     }
   };
 
-  return (
+  retornar (
     <div className="min-h-screen bg-background flex flex-col">
-      {step <= TOTAL_STEPS + 1 && (
+      {passo <= TOTAL_PASSOS + 1 && (
         <QuizHeader currentStep={step} totalSteps={TOTAL_STEPS} isSticky={step <= TOTAL_STEPS + 1} />
       )}
       <div className="flex-1 flex flex-col max-w-lg mx-auto w-full px-4 py-6">
@@ -782,13 +800,13 @@ const QuizContainer: React.FC = () => {
           {renderStep()}
         </div>
       </div>
-      {step > 1 && (
+      {passo > 1 && (
         <div className="max-w-lg mx-auto w-full px-4 pb-4">
-          <button
-            onClick={goBack}
+          <botão
+            onClick={voltar}
             className="text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
-            ← Volver
+            ← Voltar
           </button>
         </div>
       )}
