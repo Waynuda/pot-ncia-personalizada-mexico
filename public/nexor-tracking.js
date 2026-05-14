@@ -2,7 +2,7 @@
 (function () {
   var SUPABASE_URL = 'https://kglbkohmprsfwbltcaly.supabase.co';
   var SUPABASE_KEY = 'sb_publishable_PXDKmJqTWih11oarHijLkQ_TLDma-ZI';
-  var QUIZ_ID = 'quiz-01-2tcf';
+  var QUIZ_ID = 'quiz-mexico-ja1b';
   var TOTAL_STEPS = 32;
   var ETAPA_NOMES = {
   1: 'etapa-1',
